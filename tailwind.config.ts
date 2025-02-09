@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        modern: ['Roboto', 'Helvetica Neue', 'sans-serif'],
+        gokuti :['851Gokuti','sans-serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
