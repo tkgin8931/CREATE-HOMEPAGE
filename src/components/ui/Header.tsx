@@ -1,15 +1,15 @@
 "use client"
 
-import Image from "next/image"
+// import Image from "next/image"
 
-const images = [
-    {
-        src:"/CREATE-LOGO.png"
-    },
-    {
-        src:"/CREATE_moji.png"
-    },
-]
+// const images = [
+//     {
+//         src:"/CREATE-LOGO.png"
+//     },
+//     {
+//         src:"/CREATE_moji.png"
+//     },
+// ]
 
 export default function Header() {
     return (
