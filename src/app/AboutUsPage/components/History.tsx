@@ -93,7 +93,7 @@ export default function History() {
     )
 }
 
-function TimeLineEvent({ event, index }) {
+function TimeLineEvent({ event, index } :{ event: TimeLineEvents, index: number}) {
     const { ref, inView } = useInView({ triggerOnce: true })
     const isEven = index % 2 === 0
 
