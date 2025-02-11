@@ -22,7 +22,7 @@ export default function Contact() {
         formState: { errors },
     } = useForm<ContactForm>()
 
-    const onSubmit = async (data: ContactForm) => {
+    const onSubmit = async () => {
         setIsSubmitting(true)
 
         await new Promise((resolve) => setTimeout(resolve, 1000))
