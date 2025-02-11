@@ -77,7 +77,6 @@ const timeLineEvents : TimeLineEvents [] = [
 ]
 
 export default function History() {
-    const [selectedEvents, setSelectedEvents] = useState(null);
 
     return (
         <section id="history" className="bg-gray-100 py-16 md:py-24">

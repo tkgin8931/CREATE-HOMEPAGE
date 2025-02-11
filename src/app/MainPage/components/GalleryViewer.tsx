@@ -52,8 +52,11 @@ export default function GalleryViewer() {
                             ease : [0.4,0.0,0.2,1]
                         }}                                   
                     >
-                        <img 
-                        src={images[index].src} 
+                        <Image
+                        src={images[index].src}
+                        alt=""
+                        width={1200}
+                        height={800}
                         className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-black/20" />

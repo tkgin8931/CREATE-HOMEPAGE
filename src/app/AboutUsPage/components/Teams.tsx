@@ -27,7 +27,7 @@ export default function Teams() {
     )
 }
 
-function TeamCard({ name, image, description}) {
+function TeamCard({ name, description}) {
     const [ isHovered, setIsHovered ] = useState(false)
     const [ ref, inView ] = useInView({ triggerOnce: true, threshold: 0.1 })
 
