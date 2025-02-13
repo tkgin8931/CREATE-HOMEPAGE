@@ -16,25 +16,25 @@ interface Project {
 //モックデータ
 const projects: Project[] = [
     {
-        title: "Project 1",
-        date: "2022",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        imageUrl: "/lake.jpg",
+        title: "C-89J",
+        date: "開発中",
+        description: "2025年3月打ち上げ予定",
+        imageUrl: "/89.jpg",
+        link: "/project3",
+    },
+    {
+        title: "C-83ML",
+        date: "開発中",
+        description: "2025年8月打ち上げ予定",
+        imageUrl: "/IMG_9048.jpg",
         link: "/project1",
     },
     {
-        title: "Project 2",
-        date: "2021",
-        description: "Duis elementum, neque vitae vulputate semper, eros nisi viverra ex.",
-        imageUrl: "/hill.jpg",
+        title: "C-73J",
+        date: "開発中",
+        description: "2025年3月打ち上げ予定",
+        imageUrl: "/73.jpg",
         link: "/project2",
-    },
-    {
-        title: "Project 3",
-        date: "2020",
-        description: "Morbi quis lectus vel velit porttitor bibendum.",
-        imageUrl: "/cloud.jpg",
-        link: "/project3",
     },
 ]
 
@@ -72,7 +72,7 @@ export default function Projects() {
                                     <h3 className="text-2xl font-bold">{projects.title}</h3>
                                     <p className="text-gray-600">{projects.description}</p>
                                     <Button asChild variant="outline" className="bg-black text-white hover:bg-gray-800">
-                                       <Link href={projects.link}>Learn More</Link>
+                                       <Link href={projects.link}>プロジェクトページへ</Link>
                                     </Button>
                                 </div>
                             </motion.div>

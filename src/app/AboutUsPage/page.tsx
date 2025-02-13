@@ -10,7 +10,7 @@ export default function TechPage() {
             <Header />
             <OverView />
             <History />
-            <Teams />
+            {/* <Teams /> */}
             <Footer />
         </div>
     )

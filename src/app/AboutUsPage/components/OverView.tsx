@@ -14,12 +14,12 @@ export default function OverView() {
                 {/* Flexboxで横並びにする */}
                 <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
                     {/* 画像部分 */}
-                    <div ref={imageRef} className="mb-8 md:mb-0 md:w-1/2">
+                    <div ref={imageRef} className="mb-24 md:mb-0 md:w-1/2">
                         <Image 
-                            src="/hill.jpg"
+                            src="/logo.jpg"
                             alt="Organization image"
-                            width={800}
-                            height={900}
+                            width={550}
+                            height={550}
                             className={`rounded-lg object-cover transition-opacity duration-1000 ${
                                 imageInView ? "opacity-100" : "opacity-0"
                             }`}
@@ -33,21 +33,22 @@ export default function OverView() {
                             textInView ? "opacity-100" : "opacity-0"
                         }`}
                     >
-                        <h1 className="mb-4 text-3xl font-bold md:text-4xl">CREATE</h1>
-                        <h2 className="mb-2 text-xl font-semibold text-gray-700">Hybrid Rocket</h2>
+                        
+                        <h1 className="mb-2 text-xl font-bold text-gray-700">ご挨拶</h1>
                         <p className="mb-4">
-                            Hybrid Rocket is a collaborative project that aims to create a groundbreaking, integrated system of advanced technology solutions for space exploration. Our team of engineers, designers, and researchers are working tirelessly to develop cutting-edge technologies that will revolutionize the way we explore, understand, and protect our planet.
+                        はじめまして!東京科学大学ロケットサークルCREATEです!CREATEはハイブリッドロケットの開発・製作・打上げを行う、東京科学大学の技術系公認サークルです。
                         </p>
-                        <h3 className="mb-4 text-lg font-semibold">Our Mission</h3>
-                        <ul className="mb-4 list-inside list-disc">
-                            <li>自作エンジン+バルブシステム</li>
-                            <li>無線映像伝送</li>
-                            <li>リーフィング機構</li>
-                        </ul>
-                        <p className="mb-6">
-                            未来に点火します
+                        <p className="mb-4">
+                        ハイブリッドロケットとは液体の酸化剤と固体の燃料からなるエンジンを用いたロケットです。
+                        現在部員は約60名で、学年ごとにチームを作って日々ロケット製作に取り組んでいます。 
                         </p>
-                        <Button size="lg">Projects Page</Button>
+                        <p className="mb-4">
+                        CREATEには宇宙を夢見るメンバーばかりが集まっています。そのため我々のロケット開発における最終目標はロケットが宇宙に到達すること、つまり高度100kmに到達することです。
+                        </p>
+                        <p className="mb-4">
+                        機体の軽量化や姿勢制御技術、高出力のエンジン、長距離通信など様々な技術が必要で、現在はそれぞれの要素技術を開発している段階です
+                        </p>
+                        <Button size="lg">プロジェクトページへ</Button>
                     </div>
                 </div>
             </div>

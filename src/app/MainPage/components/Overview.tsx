@@ -34,7 +34,7 @@ export default function Overview() {
                         <Card className="overflow-hidden">
                             <CardContent className="p-0">
                                 <Image
-                                    src="/lake.jpg"
+                                    src="/CREATE-visual.jpg"
                                     alt="Rocket"
                                     width={400}
                                     height={300}
@@ -45,7 +45,7 @@ export default function Overview() {
                             </CardContent>
                         </Card>
                         
-                        <Card className="overflow-hidden">
+                        {/* <Card className="overflow-hidden">
                             <CardContent className="p-0">
                                 <Image
                                     src="/hill.jpg"
@@ -57,7 +57,7 @@ export default function Overview() {
                                     className="w-full h-full object-cover"
                                 />
                             </CardContent>
-                        </Card>
+                        </Card> */}
                     </div>
                 </motion.div>
             </div>

@@ -77,24 +77,30 @@ export default function Contact() {
 
                     <div className="space-y-8">
                         <h3 className="text-2xl font-bold">Follow Us</h3>
-                        <div className="flex gap-6">
-                            <Button variant="ghost" size="icon" asChild>
-                                <a href="#" target="_blank" rel="noopener noreferrer">
-                                    <Twitter className="h-6 w-6" />
-                                </a>
-                            </Button>
-                            <Button variant="ghost" size="icon" asChild>
-                                <a href="#" target="_blank" rel="noopener noreferrer">
-                                    <Facebook className="h-6 w-6"></Facebook>
-                                </a>
-                            </Button>
-                            <Button variant="ghost" size="icon" asChild>
-                                <a href="#" target="_blank" rel="noopener noreferrer">
-                                    <Instagram className="h-6 w-6" />
-                                </a>
-                            </Button>
-                        </div>
+                            <div className="flex items-center gap-6">
+                                <div className="flex gap-6">
+                                    <Button variant="ghost" size="icon" asChild>
+                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                            <Twitter className="h-6 w-6" />
+                                        </a>
+                                    </Button>
+                                    <Button variant="ghost" size="icon" asChild>
+                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                            <Facebook className="h-6 w-6" />
+                                        </a>
+                                    </Button>
+                                    <Button variant="ghost" size="icon" asChild>
+                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                        <Instagram className="h-6 w-6" />
+                                        </a>
+                                    </Button>
+                                </div>
+                                <div className="flex items-center">
+                                    <p className="text-sm">Email: create.rocket@gmail.com</p>
+                                </div>
+                            </div>
                     </div>
+
                 </motion.div>
             </div>
         </section>

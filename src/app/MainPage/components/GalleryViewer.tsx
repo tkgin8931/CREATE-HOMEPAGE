@@ -64,7 +64,7 @@ export default function GalleryViewer() {
                 </AnimatePresence>
 
                 <div className="absolute inset-0 flex items-end justify-start">
-                    <div className="px-12 mb-16 ml-12">
+                    <div className="px-4 sm:px-8 md:px-12 mb-8 sm:mb-12 md:mb-16 ml-4 sm:ml-8 md:ml-12">
                         <motion.div
                         className="max-w-3xl"
                         initial={{ opacity: 0, y:20 }}

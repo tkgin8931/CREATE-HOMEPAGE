@@ -11,17 +11,17 @@ type Sponsor = {
 }
 
 const sponsors: Sponsor[] = [
-  { name: "サイレックス・テクノロジー株式会社", logo: "/hill.jpg", url: "https://example.com" },
-  { name: "工機ホールディングス株式会社", logo: "/hill.jpg", url: "https://example.com" },
-  { name: "ZONeエナジー", logo: "/hill.jpg", url: "https://example.com" },
-  { name: "NEWS COMPANY", logo: "/hill.jpg", url: "https://example.com" },
+  { name: "サイレックス・テクノロジー株式会社", logo: "/silex.png", url: "https://example.com" },
+  { name: "工機ホールディングス株式会社", logo: "/hikoki.jpg", url: "https://example.com" },
+  { name: "ZONeエナジー", logo: "/zone.jpg", url: "https://example.com" },
+  { name: "NEWS COMPANY", logo: "/newscompany.png", url: "https://example.com" },
 ]
 
 const supportingOrganizations = [
   "白星会（東京工業大学機械工学分野卒業生同窓会）",
   "インターステラテクノロジズ株式会社",
   "東京工業大学ものつくり教育研究支援センター",
-  "CREATE OB の皆様",
+  "CREATE OB・OG の皆様",
 ]
 
 const pastSponsors = [
@@ -53,16 +53,21 @@ export default function Sponsors() {
           <h3 className="text-2xl font-semibold mt-12 mb-6">協賛企業</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {sponsors.map((sponsor) => (
-              <Card key={sponsor.name} className="hover:shadow-lg transition-shadow duration-300 bg-white">
+              <Card key={sponsor.name} className="hover:shadow-lg transition-shadow duration-600 bg-white w-full">
                 <CardContent className="p-4">
                   <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                    <Image
-                      src={sponsor.logo || "/placeholder.svg"}
-                      alt={`${sponsor.name} logo`}
-                      width={200}
-                      height={100}
-                      className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
-                    />
+                    <div className={`${
+                      sponsor.name === "NEWS COMPANY" ? "bg-white p-2" :""
+                    }`}
+                    >
+                      <Image
+                        src={sponsor.logo || "/placeholder.svg"}
+                        alt={`${sponsor.name} logo`}
+                        width={200}
+                        height={100}
+                        className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
                     <p className="mt-2 text-center font-medium">{sponsor.name}</p>
                   </a>
                 </CardContent>
