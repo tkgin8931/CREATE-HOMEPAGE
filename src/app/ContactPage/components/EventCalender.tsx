@@ -24,7 +24,7 @@ export default function EventCalendar() {
           <Calendar mode="single" selected={selectedDate} onSelect={setSelectedDate} className="rounded-md border" />
           <Card className="w-full max-w-md">
             <CardHeader>
-              <CardTitle>Event Details</CardTitle>
+              <CardTitle>詳細情報</CardTitle>
               <CardDescription>{selectedDate ? selectedDate.toDateString() : "Select a date"}</CardDescription>
             </CardHeader>
             <CardContent>
@@ -34,7 +34,7 @@ export default function EventCalendar() {
                   <p className="mt-2 text-muted-foreground">{selectedEvent.description}</p>
                 </div>
               ) : (
-                <p>No events scheduled for this date.</p>
+                <p>イベントはありません</p>
               )}
             </CardContent>
           </Card>
