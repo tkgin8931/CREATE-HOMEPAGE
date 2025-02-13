@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { useInView } from "react-intersection-observer"
+import Link from "next/link"
 
 export default function OverView() {
     const { ref: imageRef, inView: imageInView } = useInView({ triggerOnce: true })
@@ -11,9 +12,9 @@ export default function OverView() {
     return (
         <section className="py-16 md:py-24">
             <div className="container mx-auto px-4">
-                {/* Flexboxで横並びにする */}
+                
                 <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
-                    {/* 画像部分 */}
+                    
                     <div ref={imageRef} className="mb-24 md:mb-0 md:w-1/2">
                         <Image 
                             src="/logo.jpg"
@@ -48,7 +49,9 @@ export default function OverView() {
                         <p className="mb-4">
                         機体の軽量化や姿勢制御技術、高出力のエンジン、長距離通信など様々な技術が必要で、現在はそれぞれの要素技術を開発している段階です
                         </p>
-                        <Button size="lg">プロジェクトページへ</Button>
+                        <Button size="lg">
+                            <Link href="/ProjectsPage">プロジェクトページへ</Link>
+                        </Button>
                     </div>
                 </div>
             </div>
