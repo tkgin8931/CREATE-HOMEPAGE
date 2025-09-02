@@ -19,14 +19,6 @@ interface TopicItems {
 //モックデータ
 const topicItems: TopicItems[] = [
     {
-        date:"2025.02.10",
-        title:"マイケル、アナログ電子回路ピンチ",
-        category:"NEWS",
-        link: "",
-        linkname: "",
-        showButton:false,
-    },
-    {
         date:"2025.01.26",
         title:"M-5i+バルブの燃焼実験に成功!",
         category:"NEWS",
@@ -58,14 +50,6 @@ const topicItems: TopicItems[] = [
         linkname:"クラファンページへ",
         showButton:true,
     },
-    {
-        date:"2024.09.11",
-        title:"C-73Jの打ち上げに失敗しました。",
-        category:"NEWS",
-        link:"/project73",
-        linkname:"",
-        showButton:false,
-    },
 ]
 
 const categoryColors = {
@@ -75,7 +59,7 @@ const categoryColors = {
 
 export default function Topics() {
     return (
-        <section className="min-h-screen bg-gray-50 py-24">
+        <section className="min-h-screen bg-gray-50 py-8">
             <div className="container mx-auto px-4">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1}} transition={{ duration: 0.5 }}>
                     <h2 className="text-4xl font-bold mb-12 text-center">TOPICS</h2>

@@ -1,15 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 export default function Header() {
     const  [isMenuOpen,setIsMenuOpen] = useState(false)
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blue-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    <div className="flex ites-center">
+                    <div className="flex items-center">
                         {/*  */}
                     </div>
                     <nav className="hidden md:block">
@@ -31,7 +32,7 @@ export default function Header() {
             </div>
             { isMenuOpen && (
                 <div className="md:hidden">
-                    <nav className="px-2 pt-2 pb-4 bg-black/90">
+                    <nav className="px-2 pt-2 pb-4 bg-black/30 backdrop-blur-md">
                         <ul className="space-y-2 text-sm text-white/90">
                             <MobileNavItem href="/MainPage" text="TOP" />
                             <MobileNavItem href="/AboutUsPage" text="ABOUT US" />
@@ -48,9 +49,28 @@ export default function Header() {
 }
 
 function NavItem({ href, text } : { href: string, text: string }) {
+    const [isHovered, setIsHovered] = useState(false);
     return (
-        <li >
-            <a href={href} className="hover:text-white transition-colors">{text}</a>
+        <li className="relative font-mono text-lg">
+            <a
+                href={href}
+                className="hover:text-white hover:scale-110 transition-colors px-1"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                {text}
+                {isHovered && (
+                    <motion.div
+                        layoutId="nav-underline"
+                        className="absolute -translate-x-1/2 -bottom-1 h-[1px] bg-white rounded"
+                        style={{ width: '100%' }}
+                        initial={{ scaleX: 0, opacity: 0 }}
+                        animate={{ scaleX: 1, opacity: 1 }}
+                        exit={{ scaleX: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                    />
+                )}
+            </a>
         </li>
     )
 }

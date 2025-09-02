@@ -16,31 +16,17 @@ interface Project {
 //モックデータ
 const projects: Project[] = [
     {
-        title: "C-89J",
-        date: "開発中",
-        description: "2025年3月打ち上げ予定",
-        imageUrl: "/89.jpg",
-        link: "/project3",
-    },
-    {
         title: "C-83ML",
         date: "開発中",
         description: "2025年8月打ち上げ予定",
         imageUrl: "/IMG_9048.jpg",
         link: "/project1",
     },
-    {
-        title: "C-73J",
-        date: "開発中",
-        description: "2025年3月打ち上げ予定",
-        imageUrl: "/73.jpg",
-        link: "/project2",
-    },
 ]
 
 export default function Projects() {
     return (
-        <section className="min-h-screen bg-gray-50 py-24">
+        <section className="min-h-screen bg-gray-50 py-8">
             <div className="container mx-auto px-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
