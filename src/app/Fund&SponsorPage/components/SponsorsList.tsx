@@ -36,7 +36,7 @@ const pastSponsors = [
 export default function Sponsors() {
   return (
     <section className="py-12">
-      <div className="container mx-auto px-4">
+  <div className="px-4 text-white bg-transparent">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">スポンサー</h2>
           <p className="text-lg mb-6">
@@ -53,11 +53,11 @@ export default function Sponsors() {
           <h3 className="text-2xl font-semibold mt-12 mb-6">協賛企業</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {sponsors.map((sponsor) => (
-              <Card key={sponsor.name} className="hover:shadow-lg transition-shadow duration-600 bg-white w-full">
-                <CardContent className="p-4">
+              <Card key={sponsor.name} className="hover:shadow-lg transition-shadow duration-600 bg-transparent w-full">
+                <CardContent className="p-4 bg-transparent">
                   <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                     <div className={`${
-                      sponsor.name === "NEWS COMPANY" ? "bg-white p-2" :""
+                      sponsor.name === "NEWS COMPANY" ? "bg-transparent p-2" :""
                     }`}
                     >
                       <Image

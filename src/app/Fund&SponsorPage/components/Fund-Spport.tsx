@@ -6,9 +6,9 @@ import { ExternalLink } from "lucide-react"
 export default function FundSupport() {
     return (
         <section className="py-12">
-            <div className="container mx-auto px-4">
+            <div className="px-4 text-white bg-transparent">
                 <h2 className="text-3xl font-bold text-center mb-6">支援のお願い</h2>
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-3xl mx-auto bg-transparent">
                     <p className="text-lg mb-6">
                       私たちCREATEでは、ハイブリッドロケットの設計・開発を行っています。
                       東京工業大学基金への参加に際し、CREATEの活動にご賛同いただけました方は、

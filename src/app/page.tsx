@@ -1,25 +1,22 @@
 "use client"
 
-import Contact from "./MainPage/components/Contact"
-import GalleryViewer  from "./MainPage/components/GalleryViewer"
+import GalleryViewer  from "./MainPage/components/MainHeroSection"
 import Header from "../components/ui/Header"
-import Overview from "./MainPage/components/Overview"
-// import Projects from "./MainPage/components/Projects"
-// import Topics from "./MainPage/components/Topic"
 import Footer from "../components/ui/Footer"
+import OngoingMissions from "./MainPage/components/OngoingMission"
+import CompletedMissions from "./MainPage/components/CompletedMissions"
+
 
 export default function TopPage() {
     return (
-        <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-1">
-              <GalleryViewer />
-            </main>
-            <section className="bg-black">
-                <Overview />            
-                <Contact />
-            </section>
-            <Footer />
-        </div>
+            <div className="flex flex-col min-h-screen relative">
+                <Header />
+                <main className="flex-1">
+                  <GalleryViewer />
+                </main>
+                <OngoingMissions />
+                <CompletedMissions />
+                <Footer className="absolute bottom-0 w-full" />
+            </div>
     )
 }

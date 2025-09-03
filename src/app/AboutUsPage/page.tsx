@@ -1,17 +1,12 @@
 import Header from "@/components/ui/Header";
-import Footer from "@/components/ui/Footer";
-import OverView from "./components/OverView";
-import History from "./components/History";
-// import Teams from "./components/Teams";
+import Overview from "./Overview";
 
-export default function TechPage() {
+
+export default function AboutUsPage() {
     return (
-        <div>
+        <section>
             <Header />
-            <OverView />
-            <History />
-            {/* <Teams /> */}
-            <Footer />
-        </div>
+            <Overview />
+        </section>
     )
 }

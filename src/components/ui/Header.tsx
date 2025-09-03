@@ -15,7 +15,7 @@ export default function Header() {
                     </div>
                     <nav className="hidden md:block">
                         <ul className="flex space-x-4 lg:space-x-8 text-sm text-white/90">
-                            <NavItem href="/MainPage" text="TOP" />
+                            <NavItem href="/" text="TOP" />
                             <NavItem href="/AboutUsPage" text="ABOUT US" />
                             <NavItem href="/ProjectsPage" text="PROJECTS" />
                             <NavItem href="/TechPage" text="TECH" />
@@ -34,7 +34,7 @@ export default function Header() {
                 <div className="md:hidden">
                     <nav className="px-2 pt-2 pb-4 bg-black/30 backdrop-blur-md">
                         <ul className="space-y-2 text-sm text-white/90">
-                            <MobileNavItem href="/MainPage" text="TOP" />
+                            <MobileNavItem href="/" text="TOP" />
                             <MobileNavItem href="/AboutUsPage" text="ABOUT US" />
                             <MobileNavItem href="/ProjectsPage" text="PROJECTS" />
                             <MobileNavItem href="/TechPage" text="TECH" />

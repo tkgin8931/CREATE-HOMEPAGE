@@ -1,9 +1,9 @@
 "use client"
 
-export default function Footer() {
+export default function Footer({ className = "" }: { className?: string }) {
   return (
-    <footer className="bg-black/90 backdrop-blur-sm text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <footer className={`bg-transparent backdrop-blur-sm text-white ${className}`}>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm mb-4 md:mb-0">© 2025 CREATE. All Rights Reserved.</div>
           <nav className="w-full md:w-auto">
@@ -25,7 +25,7 @@ export default function Footer() {
 function FooterNavItem({ href, text }: { href: string; text: string }) {
   return (
     <li>
-      <a href={href} className="hover:text-gray-300 transition-colors">
+      <a href={href} className="hover:text-gray-300 font-mono transition-colors">
         {text}
       </a>
     </li>

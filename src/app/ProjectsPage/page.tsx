@@ -5,6 +5,7 @@ import { ProjectCard } from "./components/ProjectList"
 import { FilterSearch } from "./components/FilterSearch"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
+import Timeline from "./components/TimeLine"
 
 // This would typically come from an API or CMS
 const projectsData = [
@@ -48,6 +49,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
+      <Timeline />
       <main className="flex-grow pt-20 px-4 md:px-8 lg:px-16 pb-16">  
         <h2 className="text-3xl font-bold mb-6">プロジェクト一覧</h2>
         <FilterSearch categories={categories} onFilterChange={handleFilterChange} />

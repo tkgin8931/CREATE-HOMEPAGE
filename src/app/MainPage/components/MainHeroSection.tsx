@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence} from "framer-motion";
 import Image from "next/image";
-import TextType from "./TextType";
+import TextType from "@/app/MainPage/components/TextType";
 // import LogoLoop from '../../../components/ui/LogoLoop';
 
 // const imageLogos = [
@@ -12,24 +12,42 @@ import TextType from "./TextType";
 //   { src: "/zone.png", alt: "Company 3" },
 // ];
 
-
-const media = [
-    { type: "video", src: "/ScreenRecording_08-31-2025 21-51-40_1.mov", caption: "ENGINE'J-6i'" },
-    { type: "video", src: "/73L.mp4", caption: "C-73J'DAC'" },
-    { type: "image", src: "/IMG_0853.jpg", caption: "C-83LM'キーちゃん'" },
-    { type: "image", src: "/61-fire.JPG", caption: "C-61J'UNICORN'" },
-    { type: "image", src: "/engine.png", caption: "ENGINE'LM-5i'" },
+const mediaFiles = [
+    {
+        type: "video",
+        src: "/ScreenRecording_08-31-2025 21-51-40_1.mov",
+        caption: "ENGINE'J-6i'"
+    },
+    {
+        type: "video",
+        src: "/73L.mp4",
+        caption: "C-73J'DAC'"
+    },
+    {
+        type: "image",
+        src: "/IMG_0853.jpg",
+        caption: "C-83LM'キーちゃん'"
+    },
+    {
+        type: "image",
+        src: "/61-fire.JPG",
+        caption: "C-61J'UNICORN'"
+    },
+    {
+        type: "image",
+        src: "/engine.png",
+        caption: "ENGINE'LM-5i'"
+    }
 ]
 
-const slideDuration = 6000;
-
-export default function GalleryViewer() {
+export default function ContactHeroSection() {
 
     const [index, setIndex] = useState(0);
+    const slideDuration = 6000;
 
         useEffect(() => {
         const interval = setInterval(() => {
-            setIndex((current) => (current === media.length - 1 ? 0 : current + 1))
+            setIndex((current) => (current === mediaFiles.length - 1 ? 0 : current + 1))
         }, slideDuration);
         return () => clearInterval(interval);
     }, []);
@@ -83,9 +101,9 @@ export default function GalleryViewer() {
                                 backgroundColor: { duration: 0.5 }
                             }}
                     >
-                        {media[index].type === "image" ? (
+                        {mediaFiles[index].type === "image" ? (
                             <Image
-                                src={media[index].src}
+                                src={mediaFiles[index].src}
                                 alt=""
                                 width={1200}
                                 height={800}
@@ -93,7 +111,7 @@ export default function GalleryViewer() {
                             />
                         ) : (
                             <video
-                                src={media[index].src}
+                                src={mediaFiles[index].src}
                                 className="w-full h-full object-cover bg-black"
                                 autoPlay
                                 loop
@@ -123,18 +141,16 @@ export default function GalleryViewer() {
                     </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute inset-0 flex justify-center items-center w-full h-full">
-                    <div className="w-full h-full flex justify-center items-center">
-                        <TextType 
-                            key={index}
-                            text={media[index].caption}
-                            className="font-mono text-white text-6xl"
-                        />
-                    </div>
+                <div className="absolute bottom-8 right-8 z-30 pointer-events-none font-mono text-gray-400">
+                    <TextType 
+                        key={index}
+                        text={mediaFiles[index].caption}
+                        className="font-mono text-gray-400 text-xl"
+                    />
                 </div>
-
+                            
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3">
-                    {media.map((_, i) => (
+                    {mediaFiles.map((_, i) => (
                         <div
                             key={i}
                             className={`w-2 h-2 rounded-full transition-all duration-300 ${
