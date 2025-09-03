@@ -19,10 +19,10 @@ export const projectsData = [
   { id: "18", name: "LM-5i", period: "2025/01", category: "エンジン", thumbnail: "/IMG_9048.jpg" },
   {
     id: "19",
-    name: "C-83J(キーちゃん)+LM-5i",
-    period: "2025/08予定",
+    name: "C-83LM(キーちゃん)",
+    period: "2025/08",
     category: "ロケット",
     thumbnail: "/IMG_9049.png",
   },
-  { id: "20", name: "C-89J(白)", period: "2025/03予定", category: "ロケット", thumbnail: "/89.jpg" },
+  { id: "20", name: "C-89J(白)", period: "2025/03", category: "ロケット", thumbnail: "/89.jpg" },
 ]
