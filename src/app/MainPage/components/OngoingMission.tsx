@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+
 
 interface Mission {
   name: string;
@@ -35,24 +35,11 @@ const missions: Mission[] = [
 ];
 
 export default function OngoingMissions() {
-  const [statistics, setStatistics] = useState<Statistics>({
-    completed: 537,
-    landings: 498,
-    reflights: 462
-  });
-
-  // Simulate live updating statistics
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStatistics(prev => ({
-        completed: prev.completed + Math.floor(Math.random() * 2),
-        landings: prev.landings + Math.floor(Math.random() * 2),
-        reflights: prev.reflights + Math.floor(Math.random() * 2)
-      }));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const statistics : Statistics = {
+    completed: 20,
+    landings: 20,
+    reflights: 20
+  };
 
   const formatNumber = (num: number) => {
     return num.toString().split('').map((digit, index) => (
