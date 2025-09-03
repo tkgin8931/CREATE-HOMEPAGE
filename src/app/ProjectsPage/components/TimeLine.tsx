@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -10,22 +12,28 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    year: 2008,
-    title: "Falcon 1",
-    description: "Falcon 1 becomes first privately deployed liquid fueled rocket to reach orbit",
-    image: "https://images.pexels.com/photos/796206/pexels-photo-796206.jpeg"
+    year: 2024,
+    title: "C-79J",
+    description: "SmokeBoll",
+    image: "79-CAD.png"
   },
   {
     year: 2010,
     title: "Falcon 9",
     description: "Falcon 9 successfully completes its first flight",
-    image: "https://images.pexels.com/photos/796220/pexels-photo-796220.jpeg"
+    image: "71.jpg"
   },
   {
     year: 2012,
     title: "Dragon",
     description: "Dragon develops capability to deliver cargo to International Space Station",
-    image: "https://images.pexels.com/photos/796128/pexels-photo-796128.jpeg"
+    image: "burnig.png"
+  },
+  {
+    year: 2013,
+    title: "Grasshopper",
+    description: "Grasshopper successfully demonstrates vertical landing technology",
+    image: "11.jpg"
   }
 ];
 
@@ -50,14 +58,14 @@ export default function Timeline() {
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${event.image})` }}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-40" />
+            <div className="absolute inset-0 bg-black/60 bg-opacity-40" />
             <div className="relative h-full flex items-center">
               <div className="max-w-7xl mx-auto px-8 lg:px-16">
                 <div className="max-w-2xl">
-                  <h2 className="text-8xl lg:text-9xl font-light mb-8 tracking-wider">
+                  <h2 className="text-8xl lg:text-9xl text-white font-mono font-light mb-8 tracking-wider">
                     {event.year}
                   </h2>
-                  <p className="text-xl lg:text-2xl font-light leading-relaxed">
+                  <p className="text-xl lg:text-2xl font-light text-white font-mono leading-relaxed">
                     {event.description}
                   </p>
                 </div>

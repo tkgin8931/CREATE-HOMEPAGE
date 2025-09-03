@@ -80,7 +80,7 @@ export default function ContactHeroSection() {
                         priority
                     /> */}
                     <Image
-                        src="/CREATE_moji.png" // public/logo.jpg
+                        src="/CREATE_moji_negate.png" // public/logo.jpg
                         alt="Logo"
                         width={240}
                         height={240}
