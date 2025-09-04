@@ -11,7 +11,7 @@ const specifications: Specification[] = [
   { label: "PAYLOAD CAPACITY", value: "100 - 150 t (fully reusable)" }
 ];
 
-export default function OverView() {
+export default function RocketOverview() {
   return (
     <section className="bg-black py-24">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">

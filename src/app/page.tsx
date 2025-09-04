@@ -6,7 +6,7 @@ import Footer from "../components/ui/Footer"
 import OngoingMissions from "./MainPage/components/OngoingMission"
 import CompletedMissions from "./MainPage/components/CompletedMissions"
 import DomeGallery from "./MainPage/components/DoomPhoto"
-import OverView from "./MainPage/components/OverView"
+import RocketOverview from "./MainPage/components/RocketOverView"
 
 export default function TopPage() {
     return (
@@ -15,7 +15,7 @@ export default function TopPage() {
                 <main className="flex-1">
                   <GalleryViewer />
                 </main>
-                <OverView />
+                <RocketOverview />
                 <OngoingMissions />
                 <CompletedMissions />
                       <div className="relative w-full h-[100vh]">
