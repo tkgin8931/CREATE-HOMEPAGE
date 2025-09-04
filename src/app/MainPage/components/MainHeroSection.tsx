@@ -4,13 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence} from "framer-motion";
 import Image from "next/image";
 import TextType from "@/app/MainPage/components/TextType";
-// import LogoLoop from '../../../components/ui/LogoLoop';
-
-// const imageLogos = [
-//   { src: "/newscompany.png", alt: "Company 1" },
-//   { src: "/silex.png", alt: "Company 2" },
-//   { src: "/zone.png", alt: "Company 3" },
-// ];
 
 const mediaFiles = [
     {
@@ -54,52 +47,18 @@ export default function ContactHeroSection() {
     
         return (
             <div className="relative w-full min-h-screen overflow-hidden">
-                {/* LogoLoop 右下配置 */}
-                {/* <div className="absolute bottom-6 right-6 z-20">
-                <LogoLoop
-                    logos={imageLogos}
-                    speed={120}
-                    direction="left"
-                    logoHeight={48}
-                    gap={40}
-                    pauseOnHover
-                    scaleOnHover
-                    fadeOut
-                    fadeOutColor="#ffffff"
-                    ariaLabel="Technology partners"
-                />
-                </div> */}
-                {/* ロゴ画像 左上配置 */}
-                <div className="absolute top-6 left-6 z-20">
-                    {/* <Image
-                        src="/CREATE-LOGO.png" // public/logo.jpg
-                        alt="Logo"
-                        width={120}
-                        height={120}
-                        className="object-contain drop-shadow-lg"
-                        priority
-                    /> */}
-                    <Image
-                        src="/CREATE_moji_negate.png" // public/logo.jpg
-                        alt="Logo"
-                        width={240}
-                        height={240}
-                        className="object-contain drop-shadow-lg"
-                        priority
-                    />
-                </div>
                 <AnimatePresence mode="wait">
-                        <motion.div
-                            key={index}
-                            className="absolute inset-0 bg-slate-700"
-                            initial={{ opacity: 1, scale: 1.0, backgroundColor: '#000' }}
-                            animate={{ opacity: 1, scale: 1.05, backgroundColor: '#000' }}
-                            exit={{ opacity: 1, scale: 1.0, backgroundColor: '#000' }}
-                            transition={{
-                                opacity: { duration: 0.5, ease: [0.4,0.0,0.2,1] },
-                                scale: { duration: 0.5, ease: [0.4,0.0,0.2,1] },
-                                backgroundColor: { duration: 0.5 }
-                            }}
+                    <motion.div
+                        key={index}
+                        className="absolute inset-0 bg-slate-700"
+                        initial={{ opacity: 1, scale: 1.0, backgroundColor: '#000' }}
+                        animate={{ opacity: 1, scale: 1.05, backgroundColor: '#000' }}
+                        exit={{ opacity: 1, scale: 1.0, backgroundColor: '#000' }}
+                        transition={{
+                            opacity: { duration: 0.5, ease: [0.4,0.0,0.2,1] },
+                            scale: { duration: 0.5, ease: [0.4,0.0,0.2,1] },
+                            backgroundColor: { duration: 0.5 }
+                        }}
                     >
                         {mediaFiles[index].type === "image" ? (
                             <Image
@@ -107,12 +66,12 @@ export default function ContactHeroSection() {
                                 alt=""
                                 width={1200}
                                 height={800}
-                                className="w-full h-full object-cover bg-black"
+                                className="w-full h-full object-cover bg-black min-h-[320px] sm:min-h-[480px] md:min-h-[600px] lg:min-h-[700px]"
                             />
                         ) : (
                             <video
                                 src={mediaFiles[index].src}
-                                className="w-full h-full object-cover bg-black"
+                                className="w-full h-full object-cover bg-black min-h-[320px] sm:min-h-[480px] md:min-h-[600px] lg:min-h-[700px]"
                                 autoPlay
                                 loop
                                 muted
@@ -141,19 +100,20 @@ export default function ContactHeroSection() {
                     </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute bottom-8 right-8 z-30 pointer-events-none font-mono text-gray-400">
+                {/* キャプション：画面サイズで位置・サイズ調整 */}
+                <div className="absolute z-30 pointer-events-none font-mono text-white/60 right-4 bottom-12 sm:right-8 sm:bottom-8 md:right-16 md:bottom-16">
                     <TextType 
                         key={index}
                         text={mediaFiles[index].caption}
-                        className="font-mono text-gray-400 text-xl"
+                        className="font-mono text-white/60 text-base sm:text-xl md:text-2xl"
                     />
                 </div>
-                            
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3">
+                {/* インジケーター：画面サイズで位置・サイズ調整 */}
+                <div className="absolute left-1/2 -translate-x-1/2 flex space-x-2 bottom-4 sm:bottom-8 md:bottom-16">
                     {mediaFiles.map((_, i) => (
                         <div
                             key={i}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            className={`w-1 h-1 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
                                 i === index ? "bg-white scale-125" : "bg-white/50 scale-100"
                             }`}
                         />

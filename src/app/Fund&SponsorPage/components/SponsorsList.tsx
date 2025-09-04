@@ -68,7 +68,7 @@ export default function Sponsors() {
                         className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <p className="mt-2 text-center font-medium">{sponsor.name}</p>
+                    <p className="mt-2 text-center font-medium text-white/90">{sponsor.name}</p>
                   </a>
                 </CardContent>
               </Card>
@@ -78,7 +78,7 @@ export default function Sponsors() {
           <h3 className="text-2xl font-semibold mt-12 mb-6">支援企業・団体</h3>
           <ul className="list-disc list-inside mb-8">
             {supportingOrganizations.map((org, index) => (
-              <li key={index} className="mb-2">
+              <li key={index} className="mb-2 text-white/90">
                 {org}
               </li>
             ))}

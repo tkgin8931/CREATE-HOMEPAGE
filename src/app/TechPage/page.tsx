@@ -79,7 +79,7 @@ export default function BlogPage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/CREATE-visual.jpg')",
+            backgroundImage: "url('/IMG_0853.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-black/80" />
@@ -91,13 +91,7 @@ export default function BlogPage() {
 
           {/* Hero Content */}
           <div className="px-6 pb-20 pt-12 max-w-7xl mx-auto">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
-                TechBlog
-              </h1>
-              <p className="text-xl text-gray-400 mb-8 text-pretty">
-                CREATEの独自技術を紹介します。
-              </p>
+            <div className="max-w-3xl py-8">
             </div>
           </div>
         </div>
