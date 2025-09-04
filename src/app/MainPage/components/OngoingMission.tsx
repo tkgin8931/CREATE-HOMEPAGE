@@ -41,13 +41,6 @@ export default function OngoingMissions() {
     reflights: 20
   };
 
-  const formatNumber = (num: number) => {
-    return num.toString().split('').map((digit, index) => (
-      <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-3 py-2 mx-1 font-mono text-2xl">
-        {digit}
-      </span>
-    ));
-  };
 
   return (
     <section className="bg-black py-24">
@@ -58,30 +51,41 @@ export default function OngoingMissions() {
             ONGOING MISSIONS
           </h2>
           
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+          <div className="flex flex-row gap-4 sm:gap-12 lg:gap-16 justify-center items-center">
             <div className="text-center">
-              <div className="flex justify-center mb-2 text-white/70">
-                {formatNumber(statistics.completed)}
+              <div className="flex justify-center mb-1 text-white/70">
+                {/* 数字のサイズをsm以下で小さく */}
+                {statistics.completed.toString().split('').map((digit, index) => (
+                  <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
+                    {digit}
+                  </span>
+                ))}
               </div>
-              <span className="text-xs font-mono tracking-wider text-gray-400">
+              <span className="text-[10px] sm:text-xs font-mono tracking-wider text-gray-400">
                 COMPLETED MISSIONS
               </span>
             </div>
-            
             <div className="text-center">
-              <div className="flex justify-center mb-2 text-white/70">
-                {formatNumber(statistics.landings)}
+              <div className="flex justify-center mb-1 text-white/70">
+                {statistics.landings.toString().split('').map((digit, index) => (
+                  <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
+                    {digit}
+                  </span>
+                ))}
               </div>
-              <span className="text-xs font-mono tracking-wider text-gray-400">
+              <span className="text-[10px] sm:text-xs font-mono tracking-wider text-gray-400">
                 TOTAL LANDINGS
               </span>
             </div>
-            
             <div className="text-center">
-              <div className="flex justify-center mb-2 text-white/70">
-                {formatNumber(statistics.reflights)}
+              <div className="flex justify-center mb-1 text-white/70">
+                {statistics.reflights.toString().split('').map((digit, index) => (
+                  <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
+                    {digit}
+                  </span>
+                ))}
               </div>
-              <span className="text-xs font-mono tracking-wider text-gray-400">
+              <span className="text-[10px] sm:text-xs font-mono tracking-wider text-gray-400">
                 TOTAL REFLIGHTS
               </span>
             </div>

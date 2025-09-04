@@ -180,7 +180,7 @@ export default function CompletedMissions() {
         </div>
 
         {/* Results count */}
-        <div className="mt-12 text-center">
+        <div className="md:mt-12 mt-32 text-center">
           <span className="text-sm font-mono tracking-wider text-gray-400">
             SHOWING {filteredAndSortedMissions.length} OF {completedMissions.length} MISSIONS
           </span>

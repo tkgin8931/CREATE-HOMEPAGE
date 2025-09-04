@@ -75,6 +75,7 @@ export default function Timeline() {
         ))}
       </div>
 
+
       {/* Navigation arrows */}
       <button 
         onClick={prevSlide}
