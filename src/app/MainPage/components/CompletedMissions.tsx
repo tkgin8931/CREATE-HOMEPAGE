@@ -182,7 +182,7 @@ export default function CompletedMissions() {
         {/* Results count */}
         <div className="md:mt-12 mt-32 text-center">
           <span className="text-sm font-mono tracking-wider text-gray-400">
-            SHOWING {filteredAndSortedMissions.length} OF {completedMissions.length} MISSIONS
+            SHOWING {filteredAndSortedMissions.length} OF 21 MISSIONS
           </span>
         </div>
       </div>

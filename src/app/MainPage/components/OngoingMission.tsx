@@ -8,37 +8,37 @@ interface Mission {
 }
 
 interface Statistics {
+  ongoing: number;
   completed: number;
-  landings: number;
-  reflights: number;
+  succeeded: number;
 }
 
 const missions: Mission[] = [
   {
     name: "C-103J MISSION",
-    timeOnOrbit: "T+10D 01:30:54",
-    caption: "March 2026",
+    timeOnOrbit: "March 2026",
+    caption: "---",
     image: "https://images.pexels.com/photos/796206/pexels-photo-796206.jpeg"
   },
   {
     name: "C-97J MISSION", 
-    timeOnOrbit: "T+32D 16:32:54",
-    caption: "AUGUST 2026",
+    timeOnOrbit: "AUGUST 2026",
+    caption: "---",
     image: "https://images.pexels.com/photos/796220/pexels-photo-796220.jpeg"
   },
   {
     name: "C-101J MISSION",
-    timeOnOrbit: "T+5D 12:00:00",
-    caption: "NOVEMBER 2026",
+    timeOnOrbit: "NOVEMBER 2026",
+    caption: "---",
     image: "https://images.pexels.com/photos/796206/pexels-photo-796206.jpeg"
   }
 ];
 
 export default function OngoingMissions() {
   const statistics : Statistics = {
-    completed: 20,
-    landings: 20,
-    reflights: 20
+    ongoing: 3,
+    completed: 21,
+    succeeded: 16
   };
 
 
@@ -55,6 +55,18 @@ export default function OngoingMissions() {
             <div className="text-center">
               <div className="flex justify-center mb-1 text-white/70">
                 {/* 数字のサイズをsm以下で小さく */}
+                {statistics.ongoing.toString().split('').map((digit, index) => (
+                  <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
+                    {digit}
+                  </span>
+                ))}
+              </div>
+              <span className="text-[10px] sm:text-xs font-mono tracking-wider text-gray-400">
+                ONGOING MISSSIONS
+              </span>
+            </div>
+            <div className="text-center">
+              <div className="flex justify-center mb-1 text-white/70">
                 {statistics.completed.toString().split('').map((digit, index) => (
                   <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
                     {digit}
@@ -67,26 +79,14 @@ export default function OngoingMissions() {
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-1 text-white/70">
-                {statistics.landings.toString().split('').map((digit, index) => (
+                {statistics.succeeded.toString().split('').map((digit, index) => (
                   <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
                     {digit}
                   </span>
                 ))}
               </div>
               <span className="text-[10px] sm:text-xs font-mono tracking-wider text-gray-400">
-                TOTAL LANDINGS
-              </span>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-1 text-white/70">
-                {statistics.reflights.toString().split('').map((digit, index) => (
-                  <span key={index} className="inline-block bg-gray-900 border border-gray-700 rounded px-2 py-1 mx-0.5 font-mono text-base sm:text-2xl">
-                    {digit}
-                  </span>
-                ))}
-              </div>
-              <span className="text-[10px] sm:text-xs font-mono tracking-wider text-gray-400">
-                TOTAL REFLIGHTS
+                SUCCEEDED MISSIONS
               </span>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function OngoingMissions() {
                   className="w-20 h-14 bg-cover bg-center bg-no-repeat rounded"
                   style={{ backgroundImage: `url(${mission.image})` }}
                 /> */}
-                <span className="text-lg font-mono tracking-wide">
+                <span className="text-lg font-mono text-white tracking-wide">
                   {mission.name}
                 </span>
               </div>
