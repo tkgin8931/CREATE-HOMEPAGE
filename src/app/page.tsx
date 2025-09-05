@@ -1,5 +1,4 @@
 "use client"
-
 import GalleryViewer  from "./MainPage/components/MainHeroSection"
 import Header from "../components/ui/Header"
 import Footer from "../components/ui/Footer"
@@ -7,7 +6,6 @@ import OngoingMissions from "./MainPage/components/OngoingMission"
 import CompletedMissions from "./MainPage/components/CompletedMissions"
 import DomeGallery from "./MainPage/components/DoomPhoto"
 import RocketOverview from "./MainPage/components/RocketOverView"
-
 export default function TopPage() {
     return (
             <div className="flex flex-col min-h-screen relative bg-black">
