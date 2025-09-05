@@ -87,4 +87,6 @@ html {
     @apply bg-background text-foreground;
     }
 }
-  
+.ant-input-status-error {
+  background-color: black !important;
+}
