@@ -2,9 +2,9 @@
 
 import Squares from "./Background"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Rocket, Zap, Code, Wrench, ArrowRight} from "lucide-react"
+import { Rocket, Zap, Code, Wrench} from "lucide-react"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
 
@@ -37,7 +37,7 @@ const teams = [
     color: "bg-green-500/20 text-green-400",
     members: 15,
     projects: ["飛行シミュレーション", "SPICA", "数理解析"],
-    image: "/",
+    image: "/ANSYS.png",
   },
   {
     id: 4,
@@ -104,7 +104,7 @@ export default function Overview() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-foreground mb-4 text-white text-balance">各班紹介</h2>
             <p className="text-3xl text-white/70 text-pretty">
-              各分野に分かれて協力して、宇宙開発に取り組んでいます
+              各分野で協力して、宇宙開発に取り組んでいます
             </p>
           </div>
 
@@ -127,9 +127,6 @@ export default function Overview() {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl text-white">{team.name}</CardTitle>
-                    <Badge variant="secondary" className="bg-zinc-800 text-zinc-200 border-zinc-700">
-                      {team.members}名
-                    </Badge>
                   </div>
                   <CardDescription className="text-zinc-300 text-pretty">{team.description}</CardDescription>
                 </CardHeader>
@@ -144,10 +141,10 @@ export default function Overview() {
                       ))}
                     </div>
                   </div>
-                  <Button size="sm" variant="ghost" className="bg-zinc-800 text-zinc-200 hover:bg-zinc-700 w-full border border-zinc-700">
+                  {/* <Button size="sm" variant="ghost" className="bg-zinc-800 text-zinc-200 hover:bg-zinc-700 w-full border border-zinc-700">
                     チーム詳細
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             ))}

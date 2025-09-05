@@ -98,7 +98,7 @@ export default function CompletedMissions() {
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         {/* Header with Search */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16">
-          <h2 className="text-white text-5xl lg:text-6xl font-light mb-8 lg:mb-0 tracking-wide">
+          <h2 className="text-white text-4xl lg:text-6xl font-light mb-8 lg:mb-0 tracking-wide">
             COMPLETED MISSIONS
           </h2>
           

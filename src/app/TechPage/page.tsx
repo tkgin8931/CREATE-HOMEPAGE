@@ -4,68 +4,69 @@ import { Badge } from "@/components/ui/badge"
 import { CalendarDays, Clock, ArrowRight} from "lucide-react"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
+import Image from "next/image"
 
 const blogPosts = [
   {
     id: 1,
-    title: "Starship's Revolutionary Design: Engineering the Future of Space Travel",
+    title: "jQueryの魔力",
     excerpt:
-      "Exploring the groundbreaking innovations that make Starship the most advanced spacecraft ever built, from its stainless steel construction to its revolutionary Raptor engines.",
+      "どうも宮田マイケルです。今回は、私がかつて経験したjQueryの魔力についてお話しします。jQueryは、そのシンプルさと強力な機能で、多くの開発者を魅了してきました。しかし、その魔力には注意が必要です。",
     date: "2024-03-15",
     readTime: "8 min read",
     category: "Engineering",
-    image: "/starship-rocket-launch-space.jpg",
+    image: "/IMG_0853.jpg",
     featured: true,
   },
   {
     id: 2,
-    title: "Mars Colonization: The Next Giant Leap for Humanity",
+    title: "Bootstapことはじめ",
     excerpt:
-      "A comprehensive look at the challenges and opportunities of establishing a sustainable human presence on Mars, and how SpaceX is making it possible.",
+      "どうも宮田マイケルです。今回は、私が初めてBootstrapを使ったときの経験についてお話しします。Bootstrapは、その使いやすさと豊富なコンポーネントで、多くの開発者に愛されています。しかし、その魅力には注意が必要です。",
     date: "2024-03-12",
     readTime: "12 min read",
     category: "Exploration",
-    image: "/mars-planet-colonization-red-surface.jpg",
+    image: "/IMG_0853.jpg",
   },
   {
     id: 3,
-    title: "Falcon Heavy: Redefining Heavy-Lift Capabilities",
+    title: "Pythonに潜む罠",
     excerpt:
-      "How the world's most powerful operational rocket is transforming satellite deployment and deep space missions with unprecedented payload capacity.",
+      "どうも宮田マイケルです。今回は、Pythonに潜む罠についてお話しします。Pythonは、そのシンプルさと強力なライブラリで多くの開発者に愛されていますが、その裏にはいくつかの罠が潜んでいます。",
     date: "2024-03-10",
     readTime: "6 min read",
     category: "Technology",
-    image: "/falcon-heavy-rocket-three-boosters-launch.jpg",
+    image: "/IMG_0853.jpg",
   },
   {
     id: 4,
-    title: "Starlink Constellation: Connecting the World",
+    title: "時代はHaskell",
     excerpt:
-      "The ambitious satellite internet project that's bringing high-speed connectivity to remote corners of the globe and revolutionizing global communications.",
+      "関数型以外はカス。どうも宮田マイケルです。今回は、Haskellの魅力とその可能性についてお話しします。Haskellは、その純粋関数型プログラミングの特性と強力な型システムで知られていますが、実際にどのように活用できるのでしょうか。",
     date: "2024-03-08",
     readTime: "10 min read",
     category: "Connectivity",
-    image: "/starlink-satellites-constellation-earth-orbit.jpg",
+    image: "/IMG_0853.jpg",
   },
   {
     id: 5,
-    title: "Raptor Engine: The Heart of Next-Gen Propulsion",
+    title: "Filezillaの使い方",
     excerpt:
-      "Deep dive into the methane-fueled engine technology that powers Starship and represents a quantum leap in rocket propulsion efficiency.",
+      "どうも宮田マイケルです。Filezillaは、FTP（File Transfer Protocol）クライアントであり、ファイルのアップロードやダウンロードを簡単に行うことができます。この記事では、Filezillaの基本的な使い方と便利な機能について解説します。",
     date: "2024-03-05",
     readTime: "7 min read",
     category: "Engineering",
-    image: "/raptor-engine-rocket-propulsion-flames.jpg",
+    image: "/IMG_0853.jpg",
   },
   {
     id: 6,
-    title: "Dragon Capsule: Pioneering Commercial Crew Transportation",
+    title: "Dependency Injectionとは",
     excerpt:
-      "The story of how Dragon became the first commercial spacecraft to carry astronauts to the International Space Station and back.",
+      "どうも宮田マイケルです。Dependency Injection（依存性注入）とは、ソフトウェア設計におけるパターンの一つで、オブジェクトの依存関係を外部から注入することで、柔軟性やテスト容易性を向上させる手法です。この記事では、Dependency Injectionの基本概念とその利点について解説します。",
     date: "2024-03-02",
     readTime: "9 min read",
     category: "Missions",
-    image: "/dragon-capsule-spacecraft-iss-docking.jpg",
+    image: "/IMG_0853.jpg",
   },
 ]
 
@@ -75,30 +76,39 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Header */}
-  <header className="relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/IMG_0853.jpg')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/80" />
-        </div>
+<header className="relative w-full min-h-[400px]">
+  {/* ヒーロー画像 */}
+  <div className="absolute inset-0 w-full h-full">
+    <Image
+      src="/IMG_0853.jpg"
+      alt="Hero"
+      fill
+      style={{ objectFit: "cover" }}
+      priority
+      sizes="100vw"
+      className="w-full h-full"
+    />
+    {/* 上下グラデーションオーバーレイ */}
+    <div className="absolute inset-0 pointer-events-none">
+      {/* 上部グラデーション */}
+      <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-black via-black/40 to-transparent" />
+      {/* 下部グラデーション（高さと濃さを強調） */}
+      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent" />
+    </div>
+  </div>
+  <div className="relative z-10">
+    {/* Navigation */}
+    <Header />
+    {/* Hero Content */}
+    <div className="px-6 pb-20 pt-12 max-w-7xl mx-auto">
+      <div className="max-w-3xl py-8">
+      </div>
+    </div>
+  </div>
+</header>
 
-        <div className="relative z-10">
-          {/* Navigation */}
-          <Header />
-
-          {/* Hero Content */}
-          <div className="px-6 pb-20 pt-12 max-w-7xl mx-auto">
-            <div className="max-w-3xl py-8">
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-  <main className="max-w-7xl mx-auto px-6 py-12">
+{/* Main Content をヒーロー画像に重ねる */}
+<main className="max-w-7xl mx-auto px-6 py-12 -mt-32 relative z-20">
         {/* Category Filter */}
         <div className="flex flex-wrap gap-2 mb-12">
           {categories.map((category) => (
@@ -123,15 +133,15 @@ export default function BlogPage() {
                   <img
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
-                    className="w-full h-64 md:h-full object-cover"
+                    className="w-full object-contain"
                   />
                 </div>
                 <div className="md:w-1/2 p-8">
                   <div className="flex items-center gap-2 mb-4">
-                    <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                    <Badge variant="secondary" className="bg-primary/20 text-primary text-whiteborder-primary/30">
                       Featured
                     </Badge>
-                    <Badge variant="outline">{post.category}</Badge>
+                    <Badge variant="outline" className="text-white">{post.category}</Badge>
                   </div>
                   <h2 className="text-3xl font-bold text-white mb-4 text-balance">{post.title}</h2>
                   <p className="text-gray-300 mb-6 text-pretty">{post.excerpt}</p>
@@ -169,7 +179,7 @@ export default function BlogPage() {
                   <img
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge variant="secondary" className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm text-white">
                     {post.category}

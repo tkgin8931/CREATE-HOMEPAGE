@@ -47,7 +47,7 @@ export default function OngoingMissions() {
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         {/* Statistics */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16">
-          <h2 className="text-white text-2xl lg:text-6xl font-light mb-8 lg:mb-0 tracking-wide">
+          <h2 className="text-white text-4xl lg:text-6xl font-light mb-8 lg:mb-0 tracking-wide">
             ONGOING MISSIONS
           </h2>
           

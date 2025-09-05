@@ -6,9 +6,9 @@ interface Specification {
 }
 
 const specifications: Specification[] = [
-  { label: "HEIGHT", value: "123m / 403 ft" },
-  { label: "DIAMETER", value: "9 m / 29.5 ft" },
-  { label: "PAYLOAD CAPACITY", value: "100 - 150 t (fully reusable)" }
+  { label: "ALTITUDE", value: " -- m" },
+  { label: "LENGTH", value: "-- mm" },
+  { label: "WEIGHT", value: "-- kg" }
 ];
 
 export default function RocketOverview() {
@@ -17,13 +17,9 @@ export default function RocketOverview() {
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-5xl text-white lg:text-7xl font-light mb-12 tracking-wide">
-              C-73J 「DAC」
+            <h2 className="text-4xl text-white lg:text-7xl font-light mb-12 tracking-wide">
+              C-83LM <br />「キーちゃん」
             </h2>
-            <p className="text-lg lg:text-3xl font-light leading-relaxed text-gray-300 mb-16">
-              Overview
-            </p>
-            
             <div className="space-y-8">
               {specifications.map((spec) => (
                 <div key={spec.label} className="flex justify-between items-center border-b border-gray-800 pb-6">
@@ -41,7 +37,7 @@ export default function RocketOverview() {
           <div className="relative">
             <div 
               className="aspect-[3/4] bg-cover bg-center bg-no-repeat rounded-lg shadow-2xl"
-              style={{ backgroundImage: `url(/73.jpg)` }}
+              style={{ backgroundImage: `url(/83.jpg)` }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30 rounded-lg" />
           </div>

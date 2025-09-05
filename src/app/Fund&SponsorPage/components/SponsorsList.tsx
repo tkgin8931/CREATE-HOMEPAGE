@@ -38,7 +38,11 @@ export default function Sponsors() {
     <section className="py-12">
   <div className="px-4 text-white bg-transparent">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">スポンサー</h2>
+          <h2 className="text-5xl font-bold mb-8">スポンサー</h2>
+          {/* モダンなアンダーラインでセクション区切り */}
+          <div className="w-full flex mb-4">
+            <div className="h-px w-2/3 bg-white" />
+          </div>
           <p className="text-lg mb-6">
             CREATEは多くの企業や個人の方々の支援を受けており、皆様のご支援が私たちの開発を強く後押ししてくださっています。
           </p>
