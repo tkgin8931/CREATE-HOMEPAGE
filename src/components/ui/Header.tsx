@@ -54,7 +54,7 @@ export default function Header() {
                         transition={{ duration: 0.2 }}
                     />
                     <motion.div
-                        className="fixed top-0 right-0 h-screen w-3/4 max-w-xs md:hidden z-50 flex flex-col"
+                        className="fixed top-0 right-0 h-screen w-3/4 max-w-xs md:hidden z-[999] flex flex-col"
                         initial={{ x: '100%', opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: '100%', opacity: 0 }}

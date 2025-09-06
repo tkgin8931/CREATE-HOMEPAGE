@@ -1,5 +1,3 @@
-
-
 interface Mission {
   name: string;
   timeOnOrbit: string;

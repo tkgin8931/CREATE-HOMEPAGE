@@ -108,7 +108,7 @@ export default function BlogPage() {
 </header>
 
 {/* Main Content をヒーロー画像に重ねる */}
-<main className="max-w-7xl mx-auto px-6 py-12 -mt-32 relative z-20">
+<main className="max-w-7xl mx-auto px-6 py-12 -mt-32 z-0">
         {/* Category Filter */}
         <div className="flex flex-wrap gap-2 mb-12">
           {categories.map((category) => (
