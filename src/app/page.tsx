@@ -28,6 +28,7 @@ export default function TopPage() {
                         {/* DomeGalleryを右寄せで配置 */}
                         <div className="absolute right-0 top-1/2 -translate-y-1/2 z-30" style={{ width: '60vw', maxWidth: '900px', height: '80vh' }}>
                           <DomeGallery />
+
                         </div>
                       </div>
                 <Footer className="absolute bottom-0 w-full" />
