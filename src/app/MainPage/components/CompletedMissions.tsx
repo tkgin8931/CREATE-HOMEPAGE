@@ -118,7 +118,7 @@ export default function CompletedMissions() {
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 py-6 border-b border-gray-800 mb-8">
           <button 
             onClick={() => handleSort('mission')}
-            className="flex items-center space-x-2 text-sm font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
+            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
           >
             <span>MISSION</span>
             <ArrowUpDown size={14} />
@@ -126,7 +126,7 @@ export default function CompletedMissions() {
           
           <button 
             onClick={() => handleSort('launchSite')}
-            className="flex items-center space-x-2 text-sm font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
+            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
           >
             <span>LAUNCH SITE</span>
             <ArrowUpDown size={14} />
@@ -135,7 +135,7 @@ export default function CompletedMissions() {
           
           <button 
             onClick={() => handleSort('launchDate')}
-            className="flex items-center space-x-2 text-sm font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
+            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
           >
             <span>LAUNCH DATE</span>
             <ArrowUpDown size={14} />
@@ -143,7 +143,7 @@ export default function CompletedMissions() {
           
           <button 
             onClick={() => handleSort('status')}
-            className="flex items-center space-x-2 text-sm font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
+            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
           >
             <span>STATUS</span>
             <ArrowUpDown size={14} />
@@ -157,7 +157,7 @@ export default function CompletedMissions() {
               key={`${mission.mission}-${mission.launchDate}-${index}`} 
               className="grid grid-cols-1 lg:grid-cols-6 gap-4 items-center py-6 border-b border-gray-800 hover:bg-gray-900 hover:bg-opacity-30 transition-colors duration-300 rounded-lg px-4"
             >
-              <span className="text-base lg:text-lg font-mono tracking-wide text-gray-300">
+              <span className="text-base lg:text-lg font-mono tracking-wide text-white">
                 {mission.mission}
               </span>
 

@@ -1,4 +1,5 @@
 "use client"
+
 import GalleryViewer  from "./MainPage/components/MainHeroSection"
 import Header from "../components/ui/Header"
 import Footer from "../components/ui/Footer"
@@ -6,6 +7,8 @@ import OngoingMissions from "./MainPage/components/OngoingMission"
 import CompletedMissions from "./MainPage/components/CompletedMissions"
 import DomeGallery from "./MainPage/components/DoomPhoto"
 import RocketOverview from "./MainPage/components/RocketOverView"
+// import Social from "./MainPage/components/Social"
+
 export default function TopPage() {
     return (
             <div className="flex flex-col min-h-screen relative bg-black">
@@ -16,7 +19,8 @@ export default function TopPage() {
                 <RocketOverview />
                 <OngoingMissions />
                 <CompletedMissions />
-                      <div className="relative w-full h-[100vh]">
+                {/* <Social /> */}
+                      <div className="mt-8 relative w-full h-[100vh]">
                         {/* オーバーレイ煽り文 */}
                         <div className="font-mono absolute top-1/2 left-[3%] -translate-y-1/2 z-40 px-6 py-4 rounded-xl text-white text-3xl md:text-4xl font-bold shadow-lg max-w-md text-center pointer-events-none select-none">
                           未来を創る。CREATE<br/>17年の軌跡
@@ -31,6 +35,7 @@ export default function TopPage() {
 
                         </div>
                       </div>
+                
                 <Footer className="absolute bottom-0 w-full" />
             </div>
     )

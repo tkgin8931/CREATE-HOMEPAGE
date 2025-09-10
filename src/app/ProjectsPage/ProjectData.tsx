@@ -29,4 +29,5 @@ export const projectsData = [
     caption: "-----",
   },
   { id: "20", name: "C-89J(白)", period: "打ち上げ断念", category: "ロケット", thumbnail: "/89.jpg", altitude: "313m (シミュ値)", length:"1698mm" , weight:"6.652kg", caption: "2024年度新入生機体。二段階構造フィンとピトー管に挑戦した機体。プレ現地審査におち、東京で作り直したものを改めて現地に持って行ったが、強風のため打ち上げを断念した。" },
+  { id: "21", name: "C-04R", period: "2025/08", category: "CanSat", thumbnail: "/c-04R.jpg", altitude: "-- m", length:"-- mm" , weight:"-- kg", caption: "CREATE初のランバック機体。自律走行によりゴールへの到達を目指した。" },
 ]
