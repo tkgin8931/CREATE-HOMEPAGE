@@ -17,6 +17,11 @@ const mediaFiles = [
         caption: "C-73J'DAC'"
     },
     {
+        type: "video",
+        src: "/cansat.mp4",
+        caption: "CANSAT'C-04R'"
+    },
+    {
         type: "image",
         src: "/IMG_0853.jpg",
         caption: "C-83LM'キーちゃん'"
@@ -26,11 +31,6 @@ const mediaFiles = [
         src: "/61-fire.JPG",
         caption: "C-61J'UNICORN'"
     },
-    {
-        type: "image",
-        src: "/engine.png",
-        caption: "ENGINE'LM-5i'"
-    }
 ]
 
 export default function ContactHeroSection() {
