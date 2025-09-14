@@ -1,4 +1,4 @@
-const accessToken=process.env.API_TOKEN;
+//const accessToken=process.env.API_TOKEN;
 import json from "./articles.json"
 import { blogpost } from "./blogpost"
 function jsontoblogposts(data:any):blogpost[]{
