@@ -14,7 +14,7 @@ export interface Welcome {
     body:                  string;
     coediting:             boolean;
     comments_count:        number;
-    created_at:            String;
+    created_at:            string;
     group:                 null;
     id:                    string;
     likes_count:           number;
