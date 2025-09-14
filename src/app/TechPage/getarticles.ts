@@ -3,7 +3,7 @@ import json from "./articles.json"
 import { blogpost } from "./blogpost"
 function jsontoblogposts(data:any):blogpost[]{
     const posts:blogpost[]=[];
-    var a=0;
+    let a=0;
     data.forEach((item:any) => {
         const post:blogpost={
             id:a,

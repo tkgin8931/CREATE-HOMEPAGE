@@ -71,15 +71,10 @@ const blogPosts:blogpost[] = [
     image: "/IMG_0853.jpg",
   },
 ]
-var vblogposts:blogpost[];
 const categories = ["All", "Engine", "Avionics", "Structures", "Simulation", "GSE"]
 export default async function BlogPage() {
   const data=await getarticles();
-  if(data!=0){
-    vblogposts=data;
-  }else{
-    vblogposts=blogPosts;
-  }
+  const vblogposts:blogpost[]=(data!=0)?data:blogPosts;
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Header */}
