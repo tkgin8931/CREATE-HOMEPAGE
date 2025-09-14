@@ -1,17 +1,17 @@
 //const accessToken=process.env.API_TOKEN;
 import json from "./articles.json"
-import { blogpost } from "./blogpost"
-function jsontoblogposts(data:any):blogpost[]{
+import { blogpost,Welcome } from "./blogpost"
+function jsontoblogposts(data:Welcome[]):blogpost[]{
     const posts:blogpost[]=[];
     let a=0;
-    data.forEach((item:any) => {
+    data.forEach((item:Welcome) => {
         const post:blogpost={
             id:a,
             title:item.title,
             excerpt:getPreview(item.body,50)+"...",
-            date:item.date||"2024-01-01",
+            date:item.updated_at||"2024-01-01",
             readTime:Math.floor(item.body.length/200)+" min read",
-            category:item.category||"Technology",
+            category:item.tags[0].name||"technology",
             image:getfirstimage(item.body)||"/IMG_0853.jpg",
             featured:false,
             url:item.url||"#",
