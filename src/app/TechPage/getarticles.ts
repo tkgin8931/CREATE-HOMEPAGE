@@ -1,7 +1,6 @@
 //const accessToken=process.env.API_TOKEN;
-import json from "./articles.json"
 import { blogpost,Welcome } from "./blogpost"
-function jsontoblogposts(data:Welcome[]):blogpost[]{
+export function jsontoblogposts(data:Welcome[]):blogpost[]{
     const posts:blogpost[]=[];
     let a=0;
     data.forEach((item:Welcome) => {
@@ -43,26 +42,3 @@ function getfirstimage(md: string): string | null {
   const match = md.match(regex);
   return match ? match[1] : null;
 }
-export  async function getarticles( ) {
-    try{
-    // const res=await fetch("https://qiita.com/api/v2/items?query=ESP32-S3&per_page=6",{
-    //     headers:{
-    //         barier: `Bearer ${accessToken}`,
-    //     },
-    //     next:{revalidate:24*60*60},
-    
-    // }
-    // );
-    // if(!res.ok){
-    //     throw new Error('Failed to fetch articles');
-    // }
-    // const rjson=await res.json();
-    // console.log(rjson);
-    // return jsontoblogposts(rjson);
-    const data=jsontoblogposts(json);
-    return data;
-    }catch(error){
-        console.error(error);
-    return 0;
-    }
-  }

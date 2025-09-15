@@ -1,3 +1,4 @@
+"use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -5,9 +6,11 @@ import { CalendarDays, Clock, ArrowRight} from "lucide-react"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
 import Image from "next/image"
-import {getarticles} from "./getarticles"
 import { blogpost } from "./blogpost"
 import Link from "next/link"
+import useSWR from "swr"
+import { jsontoblogposts } from "./getarticles"
+import { Welcome } from "./blogpost"
 const blogPosts:blogpost[] = [
   {
     id: 1,
@@ -71,10 +74,19 @@ const blogPosts:blogpost[] = [
     image: "/IMG_0853.jpg",
   },
 ]
+
 const categories = ["All", "Engine", "Avionics", "Structures", "Simulation", "GSE"]
-export default async function BlogPage() {
-  const data=await getarticles();
-  const vblogposts:blogpost[]=(data!=0)?data:blogPosts;
+export default  function BlogPage() {
+  let vblogposts:blogpost[]=[];
+    function fetcher(url:string){ 
+      return fetch(url).then((res)=>res.json());
+    }
+  const {data,error,isLoading}=useSWR<Welcome[]>("/api/articles",fetcher);
+  vblogposts=jsontoblogposts(data?data:[]);
+  if(error) {
+    throw new Error("Error fetching articles"+error.message);
+  };
+  if(isLoading) vblogposts=blogPosts;
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Header */}
@@ -167,7 +179,6 @@ export default async function BlogPage() {
               </div>
             </Card>
           ))}
-
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {vblogposts
