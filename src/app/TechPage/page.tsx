@@ -77,16 +77,14 @@ const blogPosts:blogpost[] = [
 
 const categories = ["All", "Engine", "Avionics", "Structures", "Simulation", "GSE"]
 export default  function BlogPage() {
-  let vblogposts:blogpost[]=[];
     function fetcher(url:string){ 
       return fetch(url).then((res)=>res.json());
     }
   const {data,error,isLoading}=useSWR<Welcome[]>("/api/articles",fetcher);
-  vblogposts=jsontoblogposts(data?data:[]);
   if(error) {
     throw new Error("Error fetching articles"+error.message);
   };
-  if(isLoading) vblogposts=blogPosts;
+    const vblogposts=isLoading?blogPosts:jsontoblogposts(data || []);
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Header */}
