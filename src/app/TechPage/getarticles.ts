@@ -1,10 +1,10 @@
 //const accessToken=process.env.API_TOKEN;
-import { blogpost } from "./blogpost"
+import { blogpost } from "./blogpost";
 
 export async function getarticles() {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"; // ベースURLを環境変数から取得
-        const res = await fetch(`${baseUrl}/TechPage/api/qiita/`, {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ""; // Fallback to empty string if not defined
+        const res = await fetch(`${baseUrl}/api/qiita/`, {
             headers: {
                 "Content-Type": "application/json"
             },
