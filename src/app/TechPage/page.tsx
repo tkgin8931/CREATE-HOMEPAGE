@@ -219,7 +219,7 @@ export default async function BlogPage() {
           <Button
             variant="outline"
             size="lg"
-            className="border-blue-400 text-blue-400 hover:bg-blue-900/40 bg-transparent"
+            className="border-blue-400 text-blue-400 hover:text-blue-900/40 bg-white bg-transparent"
           >
             Read more on Qiita
           </Button>
