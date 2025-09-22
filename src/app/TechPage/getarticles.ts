@@ -12,7 +12,7 @@ export async function getarticles() {
         });
 
         if (!res.ok) {
-            throw new Error('Failed to fetch articles');
+            throw new Error('Failed to fetch articles from '+baseUrl +" or " +res.statusText);
         }
 
         const rjson = await res.json();
