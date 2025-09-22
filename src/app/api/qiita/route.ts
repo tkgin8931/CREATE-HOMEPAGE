@@ -57,8 +57,15 @@ export  async function GET( ) {
         });
 
         if (!res.ok) {
+            const errorDetails = {
+                status: res.status,
+                statusText: res.statusText,
+                url: res.url,
+                headers: Object.fromEntries(res.headers.entries()),
+            };
+            console.error("Fetch error details:", errorDetails);
             return new Response(
-                `Failed to fetch articles from Qiita API. Status: ${res.status}, StatusText: ${res.statusText}`,
+                `Failed to fetch articles from Qiita API. Details: ${JSON.stringify(errorDetails)}`,
                 { status: res.status }
             );
         }
