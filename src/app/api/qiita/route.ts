@@ -44,31 +44,35 @@ function jsontoblogposts(data:Welcome[]):blogpost[]{
     return posts;
 }
 export  async function GET( ) {
-    try{
-        const res=await fetch("https://qiita.com/api/v2/items?query=ESP32-S3&per_page=6",{
-            headers:{
-                barier: `Bearer ${accessToken}`,
-            },
-            cache: "no-store"
+    try {
+        if (!accessToken) {
+            return new Response("API_TOKEN is not defined. Please check your environment variables.", { status: 500 });
         }
-        );
-        if(!res.ok){
-            throw new Error('Failed to fetch articles from Qiita API in route.ts: ' + res.statusText+ "enviroment valiableのapi keyの始めの5文字は"+accessToken?.slice(0,5) );
-        }
-        const rjson=await res.json();
-        return new Response(JSON.stringify(jsontoblogposts(rjson)), { status: 200 ,
+
+        const res = await fetch("https://qiita.com/api/v2/items?query=ESP32-S3&per_page=6", {
             headers: {
-        "Content-Type": "application/json"
-            }
-            });
-    //     return new Response(JSON.stringify(jsontoblogposts(json)), { status: 200 ,
-    //         headers: {
-    // "Content-Type": "application/json"
-    //     }
-    //     });
-        }catch(error){
-            console.error(error);
-        return new Response("Error fetching articles", { status: 500 } );
+                Authorization: `Bearer ${accessToken}`, // 修正: "barier" -> "Authorization"
+            },
+            cache: "no-store",
+        });
+
+        if (!res.ok) {
+            return new Response(
+                `Failed to fetch articles from Qiita API. Status: ${res.status}, StatusText: ${res.statusText}`,
+                { status: res.status }
+            );
         }
-  }
+
+        const rjson = await res.json();
+        return new Response(JSON.stringify(jsontoblogposts(rjson)), {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+    } catch (error) {
+        console.error("Unexpected error in GET function:", error);
+        return new Response("Unexpected error occurred while fetching articles.", { status: 500 });
+    }
+}
 
