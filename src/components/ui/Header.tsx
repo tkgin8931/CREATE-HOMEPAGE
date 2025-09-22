@@ -89,7 +89,7 @@ function NavItem({ href, text } : { href: string, text: string }) {
         '/ProjectsPage': 'プロジェクト一覧',
         '/TechPage': '技術・ブログ',
         '/Fund&SponsorPage': '資金・スポンサー',
-        '/ContactPage': 'お問い合わせ',
+        '/ContactPage': 'リンク・お問い合わせ',
     };
     // const [isHovered, setIsHovered] = useState(false);
     return (
