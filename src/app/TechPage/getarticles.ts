@@ -14,7 +14,7 @@ export async function getarticles() {
         });
 
         if (!res.ok) {
-            throw new Error(`Failed to fetch articles. Status: ${res.status}, StatusText: ${res.statusText}, BaseURL: ${baseUrl}`);
+            throw new Error(`Failed to fetch articles. Status: ${res.status}, StatusText: ${res.statusText}, BaseURL: ${baseUrl}, URL: ${res.url}`); // 詳細なエラーメッセージを追加
         }
 
         const rjson = await res.json();
