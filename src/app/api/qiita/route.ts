@@ -53,7 +53,7 @@ export  async function GET( ) {
         }
         );
         if(!res.ok){
-            throw new Error('Failed to fetch articles');
+            throw new Error('Failed to fetch articles from Qiita API in route.ts: ' + res.statusText+ "enviroment valiableのapi keyの始めの5文字は"+accessToken?.slice(0,5) );
         }
         const rjson=await res.json();
         return new Response(JSON.stringify(jsontoblogposts(rjson)), { status: 200 ,
