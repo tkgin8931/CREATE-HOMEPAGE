@@ -68,7 +68,7 @@ export  async function GET( ) {
     //     });
         }catch(error){
             console.error(error);
-        return 0;
+        return new Response("Error fetching articles", { status: 500 } );
         }
   }
 
