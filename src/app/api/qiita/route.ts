@@ -1,5 +1,5 @@
 //import json from "../../articles.json"
-import { blogpost,Welcome } from "./blogpost"
+import { blogpost,Welcome } from "../../TechPage/blogpost"
 const accessToken=process.env.API_TOKEN;
 function getPreview(md: string, length = 100): string {
   // 空行で分割して最初の段落を取る
@@ -26,19 +26,23 @@ function jsontoblogposts(data:Welcome[]):blogpost[]{
     const posts:blogpost[]=[];
     let a=0;
     data.forEach((item:Welcome) => {
-        const post:blogpost={
-            id:a,
-            title:item.title,
-            excerpt:getPreview(item.body,50)+"...",
-            date:item.updated_at||"2024-01-01",
-            readTime:Math.floor(item.body.length/200)+" min read",
-            category:item.tags[0].name||"technology",
-            image:getfirstimage(item.body)||"/IMG_0853.jpg",
-            featured:false,
-            url:item.url||"#",
-        };
-        a=a+1;
-        posts.push(post);
+        try {
+            const post:blogpost={
+                id:a,
+                title:item.title || "No title",
+                excerpt:getPreview(item.body || "",50)+"...",
+                date:item.updated_at||"2024-01-01",
+                readTime:Math.floor((item.body?.length || 0)/200)+" min read",
+                category:item.tags?.[0]?.name||"technology",
+                image:getfirstimage(item.body || "")||"/IMG_0853.jpg",
+                featured:false,
+                url:item.url||"#",
+            };
+            a=a+1;
+            posts.push(post);
+        } catch (error) {
+            console.error("Error processing item:", item, error);
+        }
     }
     );
     return posts;
@@ -71,7 +75,16 @@ export  async function GET( ) {
         }
 
         const rjson = await res.json();
-        return new Response(JSON.stringify(jsontoblogposts(rjson)), {
+        console.log("Qiita API response:", rjson);
+        
+        // レスポンスが配列かチェック
+        if (!Array.isArray(rjson)) {
+            console.error("Unexpected response format:", rjson);
+            return new Response("Invalid response format from Qiita API", { status: 500 });
+        }
+        
+        const blogPosts = jsontoblogposts(rjson);
+        return new Response(JSON.stringify(blogPosts), {
             status: 200,
             headers: {
                 "Content-Type": "application/json",
