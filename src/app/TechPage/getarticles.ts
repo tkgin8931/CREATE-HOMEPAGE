@@ -18,7 +18,28 @@ export async function getarticles() {
             throw new Error(`Failed to fetch articles. Status: ${res.status}, StatusText: ${res.statusText}, BaseURL: ${baseUrl}, URL: ${res.url}`); // 詳細なエラーメッセージを追加
         }
         console.log("Fetch response:", res);
-        const rjson = await res.json();
+        console.log("Content-Type:", res.headers.get("content-type"));
+        
+        // レスポンスのテキスト内容を確認
+        const responseText = await res.text();
+        console.log("Response text (first 500 chars):", responseText.substring(0, 500));
+        
+        // HTMLかJSONかを判定
+        if (res.headers.get("content-type")?.includes("text/html")) {
+            console.error("Received HTML instead of JSON. Full HTML response:", responseText);
+            throw new Error("API returned HTML instead of JSON");
+        }
+        
+        // JSONをパース
+        let rjson;
+        try {
+            rjson = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error("JSON parse error:", parseError);
+            console.error("Response text:", responseText);
+            throw new Error("Failed to parse JSON response");
+        }
+        
         console.log("Fetch JSON:", rjson);
         return rjson as blogpost[];
     } catch (error) {
