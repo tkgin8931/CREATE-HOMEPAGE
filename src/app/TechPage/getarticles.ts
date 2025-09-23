@@ -1,9 +1,13 @@
 //const accessToken=process.env.API_TOKEN;
 import { blogpost } from "./blogpost";
-
+import {headers} from 'next/headers';
 export async function getarticles() {
     try {
-        const baseUrl = process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : process.env.NEXT_PUBLIC_BASE_URL || ""; // Fallback to empty string if not defined
+        const hds = await headers();
+        const host =  hds.get("host"); // ex: "myapp.vercel.app" or "localhost:3000"
+        const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+        const baseUrl = `${protocol}://${host}`;
+
         console.log("BaseURL:", baseUrl);
         console.log("Request URL:", `${baseUrl}/api/qiita`);
 
