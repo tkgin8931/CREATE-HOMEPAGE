@@ -23,8 +23,8 @@ export async function fetchYoutubeVideos() {
     const channelId = process.env.CHANNEL_ID;
     const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`;
     const res = await fetch(url, { 
-      // next: { revalidate: 60 * 30 }
-        cache: "no-store"
+       next: { revalidate: 60 * 30 }
+       
      });
     if(!res.ok) {
         const errorText = await res.text();
