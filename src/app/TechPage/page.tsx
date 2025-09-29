@@ -7,7 +7,6 @@ import Footer from "@/components/ui/Footer"
 import Image from "next/image"
 import {getarticles} from "./getarticles"
 import { blogpost } from "./blogpost"
-import Link from "next/link"
 const blogPosts:blogpost[] = [
   {
     id: 1,
@@ -203,11 +202,11 @@ export default async function BlogPage() {
                         {post.readTime}
                       </div>
                     </div>
-                    <Link href={post.url||"#"} target="_blank" rel="noopener noreferrer">
+                    <a href={post.url||"#"} target="_blank" rel="noopener noreferrer">
                     <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300" >
                       <ArrowRight className="h-4 w-4" />
                     </Button>
-                    </Link>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
