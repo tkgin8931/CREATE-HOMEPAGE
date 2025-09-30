@@ -1,6 +1,6 @@
 //const accessToken=process.env.API_TOKEN;
 import { blogpost } from "./blogpost";
-import { getqiita } from "./qiita/route";
+import { getqiita } from "./qiita/getqiita";
 export async function getarticles() {
     try {
         const baseUrl = process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : process.env.NEXT_PUBLIC_BASE_URL || ""; // Fallback to empty string if not defined
