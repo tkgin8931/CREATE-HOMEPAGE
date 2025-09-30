@@ -1,4 +1,3 @@
-"use client"
 
 import GalleryViewer  from "./MainPage/components/MainHeroSection"
 import Header from "../components/ui/Header"
@@ -7,7 +6,7 @@ import OngoingMissions from "./MainPage/components/OngoingMission"
 import CompletedMissions from "./MainPage/components/CompletedMissions"
 import DomeGallery from "./MainPage/components/DoomPhoto"
 import RocketOverview from "./MainPage/components/RocketOverView"
-// import Social from "./MainPage/components/Social"
+import Social from "./MainPage/components/Social"
 
 export default function TopPage() {
     return (
@@ -18,7 +17,9 @@ export default function TopPage() {
                 </main>
                 <RocketOverview />
                 <OngoingMissions />
+               
                 <CompletedMissions />
+                 <Social />
                 {/* <Social /> */}
                       <div className="mt-8 relative w-full h-[100vh]">
                         {/* オーバーレイ煽り文 */}
@@ -32,6 +33,7 @@ export default function TopPage() {
                         {/* DomeGalleryを右寄せで配置 */}
                         <div className="absolute right-0 top-1/2 -translate-y-1/2 z-30" style={{ width: '60vw', maxWidth: '900px', height: '80vh' }}>
                           <DomeGallery />
+
                         </div>
                       </div>
                 

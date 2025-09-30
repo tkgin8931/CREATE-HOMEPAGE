@@ -5,8 +5,9 @@ import { CalendarDays, Clock, ArrowRight} from "lucide-react"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
 import Image from "next/image"
-
-const blogPosts = [
+import {getarticles} from "./getarticles"
+import { blogpost } from "./blogpost"
+const blogPosts:blogpost[] = [
   {
     id: 1,
     title: "jQueryの魔力",
@@ -69,10 +70,10 @@ const blogPosts = [
     image: "/IMG_0853.jpg",
   },
 ]
-
 const categories = ["All", "Engine", "Avionics", "Structures", "Simulation", "GSE"]
-
-export default function BlogPage() {
+export default async function BlogPage() {
+  const data=await getarticles();
+  const vblogposts:blogpost[]=(data!=null)?data:blogPosts;
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Header */}
@@ -124,7 +125,7 @@ export default function BlogPage() {
         </div>
 
         {/* Featured Post */}
-        {blogPosts
+        {vblogposts
           .filter((post) => post.featured)
           .map((post) => (
             <Card key={post.id} className="mb-12 overflow-hidden border border-gray-700 bg-black/80 text-white">
@@ -156,7 +157,7 @@ export default function BlogPage() {
                         {post.readTime}
                       </div>
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => window.open(post.url, "_blank")}>
                       Read More
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -168,18 +169,18 @@ export default function BlogPage() {
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts
+          {vblogposts
             .filter((post) => !post.featured)
             .map((post) => (
               <Card
                 key={post.id}
                 className="overflow-hidden border border-gray-700 bg-black/80 text-white hover:border-blue-400 transition-colors group"
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden aspect-[4/2] justify-center flex items-center bg-black/40">
                   <img
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
-                    className="w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge variant="secondary" className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm text-white">
                     {post.category}
@@ -201,9 +202,11 @@ export default function BlogPage() {
                         {post.readTime}
                       </div>
                     </div>
-                    <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300">
+                    <a href={post.url||"#"} target="_blank" rel="noopener noreferrer">
+                    <Button size="sm" variant="ghost" className="text-blue-400 hover:text-blue-300" >
                       <ArrowRight className="h-4 w-4" />
                     </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -215,9 +218,9 @@ export default function BlogPage() {
           <Button
             variant="outline"
             size="lg"
-            className="border-blue-400 text-blue-400 hover:bg-blue-900/40 bg-transparent"
+            className="border-blue-400 text-blue-400 bg-transparent hover:text-white hover:bg-blue-900/40 "
           >
-            Load More Posts
+            Read more on Qiita
           </Button>
         </div>
       </main>

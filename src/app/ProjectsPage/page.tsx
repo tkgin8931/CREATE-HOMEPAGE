@@ -1,3 +1,4 @@
+"use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -6,10 +7,11 @@ import { projectsData } from "./ProjectData"
 import Footer from "@/components/ui/Footer"
 import Header from "@/components/ui/Header"
 import Image from "next/image"
+import { useState } from "react"
 
 const categories = ["すべて", "ロケット", "エンジン","CanSat"]
-
 export default function ProjectsPage() {
+  const [selectedCategory,SetSerectedCategory] = useState("すべて");
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
@@ -37,9 +39,10 @@ export default function ProjectsPage() {
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={category === "すべて" ? "default" : "outline"}
+                variant={category === selectedCategory ? "default" : "outline"}
                 size="sm"
                 className="rounded-full bg-black text-white"
+                onClick={() => SetSerectedCategory(category)}
               >
                 <Filter className="h-4 w-4 mr-2" />
                 {category}
@@ -54,7 +57,9 @@ export default function ProjectsPage() {
 
         {/* Projects Grid */}
   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project) => (
+          {projectsData.filter((project)=>{
+            return selectedCategory === "すべて" || project.category === selectedCategory;
+          }).map((project) => (
             <Card
               key={project.id}
               className="overflow-hidden border border-gray-700 bg-black/80 text-white hover:border-blue-400 transition-colors group rounded-xl shadow-lg"

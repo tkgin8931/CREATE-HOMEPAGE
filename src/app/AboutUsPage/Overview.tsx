@@ -4,10 +4,10 @@ import Squares from "./Background"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 // import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Rocket, Zap, Code, Wrench} from "lucide-react"
+import { Rocket, Zap, Code, Wrench, FolderOpen} from "lucide-react"
 import Header from "@/components/ui/Header"
 import Footer from "@/components/ui/Footer"
-
+import Link from "next/link"
 const teams = [
   {
     id: 1,
@@ -150,6 +150,35 @@ export default function Overview() {
             ))}
           </div>
         </div>
+        {/* 情報公開について*/}
+        <div className="px-8 space-y-4 md:col-span-1 py-8">
+                        <h2 className="text-4xl font-mono font-bold mb-2 mt-11 text-white">情報の公開について</h2>
+                        <div className="w-80 h-px bg-white rounded-full mb-8" />
+                        <div className="space-y-6 text-white/80 font-mono font-normal leading-relaxed mb-10">
+                            <p>本ページで公開する​情報の閲覧・利用に当たっては、以下の内容にご了承頂けたものとします。</p>
+                            <ul className="list-disc list-outside space-y-2 pl-6">
+                            <li>CREATE（以下当団体）は学生同士で技術を広め合い，切磋琢磨できるオープンな環境づくりを目指しています。このページはその目的を実現する一環として立ち上げたものです。適切な引用の下、公開されている資料を利用して頂くことは大歓迎です。</li>
+                            <li>提供する情報の正確性を維持するために最大限の注意を払っていますが、必ずしもそれを保証するものではありません。</li>
+                            <li>​​プロジェクト報告書はプロジェクト終了から半年以上経った後の公開となります。</li>
+                            <li>当団体は、当団体の公開する情報によって生じたいかなる損害についても一切の責任を負いません。</li>
+                            <li>本情報公開は，予告なしに運用方針や運用方法の変更を行う場合があります。</li>
+                            </ul>
+                            <p>内容に関する疑問・質問・要望等も大歓迎です。お気軽にお問い合わせください。</p>
+                        </div>
+                        </div>
+                        <div className="px-8 space-y-4 md:col-span-1 py-8">
+                        <h2 className="text-4xl font-mono font-bold mb-2 mt-10  text-white">外部リンク</h2>
+                        <div className="w-80 h-px bg-white rounded-full mb-8" />
+                        <div className="space-y-4 text-white/80 font-mono font-normal leading-relaxed">
+                        <div className="pl-6 flex items-center space-x-4 hover:underline">
+                          {<Link href="https://drive.google.com/drive/u/0/folders/13f8nrL5ERnGxhedMvoN59CKWNdvQr3he">
+                            <FolderOpen size={96}/>
+                            <p>部外向け報告書(google drive)</p>
+                        </Link>}
+                        </div>
+                        </div>
+                    </div>
+        
         <Footer />
             </main>
         </section>
