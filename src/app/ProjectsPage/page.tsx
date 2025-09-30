@@ -49,10 +49,10 @@ export default function ProjectsPage() {
               </Button>
             ))}
           </div>
-          <Button variant="outline" size="sm" className="sm:ml-auto bg-gray-900 text-white border-gray-700">
+          {/* <Button variant="outline" size="sm" className="sm:ml-auto bg-gray-900 text-white border-gray-700">
             <Search className="h-4 w-4 mr-2" />
             検索
-          </Button>
+          </Button> */}
         </div>
 
         {/* Projects Grid */}
