@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { CalendarDays, Rocket, Zap, Filter, Search } from "lucide-react"
+import { CalendarDays, Rocket, Zap, Filter } from "lucide-react"
 import { projectsData } from "./ProjectData"
 import Footer from "@/components/ui/Footer"
 import Header from "@/components/ui/Header"
