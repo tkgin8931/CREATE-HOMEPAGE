@@ -1,5 +1,5 @@
 //import json from "../../articles.json"
-import { blogpost,Welcome } from "../../TechPage/blogpost"
+import { blogpost,Welcome } from "../blogpost"
 const accessToken=process.env.API_TOKEN;
 function getPreview(md: string, length = 100): string {
   // 空行で分割して最初の段落を取る
@@ -47,7 +47,7 @@ function jsontoblogposts(data:Welcome[]):blogpost[]{
     );
     return posts;
 }
-export  async function GET( ) {
+export  async function getqiita() {
     try {
         if (!accessToken) {
             return new Response("API_TOKEN is not defined. Please check your environment variables.", { status: 500 });
@@ -75,8 +75,8 @@ export  async function GET( ) {
         }
 
         const rjson = await res.json();
-        console.log("Qiita API response:", rjson);
-        
+        //console.log("Qiita API response:", rjson);
+        console.log("Qiita API called in route.ts at", new Date().toISOString());//秒数まで表示
         // レスポンスが配列かチェック
         if (!Array.isArray(rjson)) {
             console.error("Unexpected response format:", rjson);

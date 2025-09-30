@@ -1,3 +1,4 @@
+export const revalidate = 10800;// 3 hours 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -7,6 +8,7 @@ import Footer from "@/components/ui/Footer"
 import Image from "next/image"
 import {getarticles} from "./getarticles"
 import { blogpost } from "./blogpost"
+
 const blogPosts:blogpost[] = [
   {
     id: 1,
@@ -70,10 +72,11 @@ const blogPosts:blogpost[] = [
     image: "/IMG_0853.jpg",
   },
 ]
+const createdtime=new Date().toLocaleString();
+const data=await getarticles();
+const vblogposts:blogpost[]=(data!=null)?data:blogPosts;
 const categories = ["All", "Engine", "Avionics", "Structures", "Simulation", "GSE"]
 export default async function BlogPage() {
-  const data=await getarticles();
-  const vblogposts:blogpost[]=(data!=null)?data:blogPosts;
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Header */}
@@ -212,7 +215,7 @@ export default async function BlogPage() {
               </Card>
             ))}
         </div>
-
+        <div>最終更新: {createdtime}</div>
         {/* Load More */}
         <div className="text-center mt-12">
           <Button
