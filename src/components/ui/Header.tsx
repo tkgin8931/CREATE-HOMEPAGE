@@ -2,11 +2,18 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Globe } from "lucide-react"
 import Image from "next/image"
+import { useLanguage } from "@/context/LanguageContext"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { t, language, setLanguage } = useLanguage()
+
+    const toggleLanguage = () => {
+        setLanguage(language === 'ja' ? 'en' : 'ja')
+    }
+
     return (
         <>
             {/* ヘッダー */}
@@ -23,17 +30,30 @@ export default function Header() {
                                 priority
                             />
                         </div>
-                        <nav className="hidden md:block">
+                        <nav className="hidden md:flex items-center gap-6">
                             <ul className="flex space-x-4 lg:space-x-8 text-sm text-white/90">
-                                <NavItem href="/" text="TOP" />
-                                <NavItem href="/AboutUsPage" text="ABOUT US" />
-                                <NavItem href="/ProjectsPage" text="PROJECTS" />
-                                <NavItem href="/TechPage" text="TECH" />
-                                <NavItem href="/Fund&SponsorPage" text="FUND&SPONSORS" />
-                                <NavItem href="/ContactPage" text="CONTACT" />
+                                <NavItem href="/" text={t.header.top} caption={t.header.captions.top} />
+                                <NavItem href="/AboutUsPage" text={t.header.about} caption={t.header.captions.about} />
+                                <NavItem href="/ProjectsPage" text={t.header.projects} caption={t.header.captions.projects} />
+                                <NavItem href="/TechPage" text={t.header.tech} caption={t.header.captions.tech} />
+                                <NavItem href="/Fund&SponsorPage" text={t.header.fund} caption={t.header.captions.fund} />
+                                <NavItem href="/ContactPage" text={t.header.contact} caption={t.header.captions.contact} />
                             </ul>
+                            <button
+                                onClick={toggleLanguage}
+                                className="flex items-center gap-1 text-white/90 hover:text-white transition-colors font-mono text-sm border border-white/30 rounded px-2 py-1"
+                            >
+                                <Globe size={14} />
+                                {language === 'ja' ? 'EN' : 'JP'}
+                            </button>
                         </nav>
-                        <div className="md:hidden">
+                        <div className="md:hidden flex items-center gap-4">
+                            <button
+                                onClick={toggleLanguage}
+                                className="text-white/90 hover:text-white transition-colors font-mono text-sm border border-white/30 rounded px-2 py-1"
+                            >
+                                {language === 'ja' ? 'EN' : 'JP'}
+                            </button>
                             {!isMenuOpen && (
                                 <button onClick={() => setIsMenuOpen(true)} className="text-white p-2">
                                     <Menu size={24} />
@@ -44,7 +64,7 @@ export default function Header() {
                 </div>
             </header>
             {/* モバイルメニュー表示中はメインにブラー */}
-            { isMenuOpen && (
+            {isMenuOpen && (
                 <>
                     <motion.div
                         className="fixed inset-0 z-40 bg-black/30 backdrop-blur-md"
@@ -67,12 +87,12 @@ export default function Header() {
                         </div>
                         <nav className="px-4 pb-4 bg-black rounded-l-lg shadow-2xl flex-1 flex flex-col justify-start">
                             <ul className="space-y-4 text-base text-white/90">
-                                <MobileNavItem href="/" text="TOP" />
-                                <MobileNavItem href="/AboutUsPage" text="ABOUT US" />
-                                <MobileNavItem href="/ProjectsPage" text="PROJECTS" />
-                                <MobileNavItem href="/TechPage" text="TECH" />
-                                <MobileNavItem href="/Fund&SponsorPage" text="FUND&SPONSORS" />
-                                <MobileNavItem href="/ContactPage" text="CONTACT" />
+                                <MobileNavItem href="/" text={t.header.top} caption={t.header.captions.top} />
+                                <MobileNavItem href="/AboutUsPage" text={t.header.about} caption={t.header.captions.about} />
+                                <MobileNavItem href="/ProjectsPage" text={t.header.projects} caption={t.header.captions.projects} />
+                                <MobileNavItem href="/TechPage" text={t.header.tech} caption={t.header.captions.tech} />
+                                <MobileNavItem href="/Fund&SponsorPage" text={t.header.fund} caption={t.header.captions.fund} />
+                                <MobileNavItem href="/ContactPage" text={t.header.contact} caption={t.header.captions.contact} />
                             </ul>
                         </nav>
                     </motion.div>
@@ -82,56 +102,25 @@ export default function Header() {
     )
 }
 
-function NavItem({ href, text } : { href: string, text: string }) {
-    const captions: Record<string, string> = {
-        '/': 'トップページ',
-        '/AboutUsPage': '活動概要',
-        '/ProjectsPage': 'プロジェクト一覧',
-        '/TechPage': '技術・ブログ',
-        '/Fund&SponsorPage': '資金・スポンサー',
-        '/ContactPage': 'リンク・お問い合わせ',
-    };
-    // const [isHovered, setIsHovered] = useState(false);
+function NavItem({ href, text, caption }: { href: string, text: string, caption: string }) {
     return (
         <li className="relative font-mono text-lg flex flex-col items-center">
             <a
                 href={href}
-                className="hover:text-white hover:scale-125 transition-colors px-1"
-                // onMouseEnter={() => setIsHovered(true)}
-                // onMouseLeave={() => setIsHovered(false)}
+                className="hover:text-white transition-colors px-1"
             >
                 {text}
-                {/* {isHovered && (
-                    <motion.div
-                        layoutId="nav-underline"
-                        className="absolute -translate-x-1/2 -bottom-1 h-[1px] bg-white rounded"
-                        style={{ width: '100%' }}
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{ scaleX: 1, opacity: 1 }}
-                        exit={{ scaleX: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                    />
-                )} */}
             </a>
-            <div className="text-xs text-white/60 mt-1">{captions[href]}</div>
+            <div className="text-xs text-white/60 mt-1">{caption}</div>
         </li>
     )
 }
 
-function MobileNavItem({ href, text } : { href: string, text: string }) {
-    
-    const captions: Record<string, string> = {
-        '/': 'トップページ',
-        '/AboutUsPage': '活動概要',
-        '/ProjectsPage': 'プロジェクト一覧',
-        '/TechPage': '技術・ブログ',
-        '/Fund&SponsorPage': '資金・スポンサー',
-        '/ContactPage': 'お問い合わせ',
-    };
+function MobileNavItem({ href, text, caption }: { href: string, text: string, caption: string }) {
     return (
         <li>
-            <a href={ href } className="block px-3 py-3 rounded-md hover:bg-gray-700 transitions-colors">{text}</a>
-            <div className="text-xs text-white/60 px-3 pb-1">{captions[href]}</div>
+            <a href={href} className="block px-3 py-3 rounded-md hover:bg-gray-700 transitions-colors">{text}</a>
+            <div className="text-xs text-white/60 px-3 pb-1">{caption}</div>
             <div className="border-b border-gray-700 mx-2" />
         </li>
     )

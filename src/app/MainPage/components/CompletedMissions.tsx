@@ -1,11 +1,13 @@
 "use client"
 import React, { useState } from 'react';
-import { Search, ArrowUpDown } from 'lucide-react';
+import { Search, ArrowUpDown, Database } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface CompletedMission {
   mission: string;
   launchSite: string;
   launchDate: string;
+  payload: string;
   status: 'success' | 'failure';
 }
 
@@ -13,44 +15,51 @@ const completedMissions: CompletedMission[] = [
   {
     mission: "C-83LM MISSION",
     launchSite: "NOSIRO,AKITA",
-    launchDate: "AUGUST 22, 2025",
+    launchDate: "AUG 22, 2025",
+    payload: "Atmospheric Probe",
     status: "failure"
   },
   {
     mission: "C-73J MISSION",
     launchSite: "O-SIMA,TOKYO",
-    launchDate: "MARCH 30, 2025",
+    launchDate: "MAR 30, 2025",
+    payload: "CubeSat Prototype",
     status: "success"
   },
   {
     mission: "C-89J MISSION",
     launchSite: "O-SIMA,TOKYO",
-    launchDate: "MARCH 29, 2025",
+    launchDate: "MAR 29, 2025",
+    payload: "Telemetry Unit",
     status: "failure"
   },
   {
     mission: "C-73J MISSION",
     launchSite: "KADA,WAKAYAMA",
-    launchDate: "SEPTEMBER 28, 2024",
+    launchDate: "SEP 28, 2024",
+    payload: "Micro-Gravity Lab",
     status: "failure"
   },
   {
     mission: "C-79J MISSION",
     launchSite: "KADA,WAKAYAMA",
-    launchDate: "MARCH 25, 2024",
+    launchDate: "MAR 25, 2024",
+    payload: "Student Payload",
     status: "success"
   },
   {
     mission: "C-71J MISSION",
     launchSite: "O-SIMA,TOKYO",
-    launchDate: "OCTOBER 20, 2023",
+    launchDate: "OCT 20, 2023",
+    payload: "Test Mass Simulator",
     status: "success"
   },
 ];
 
-type SortField = 'mission' | 'launchSite' | 'launchDate' | 'status';
+type SortField = 'mission' | 'launchSite' | 'launchDate' | 'payload' | 'status';
 
 export default function CompletedMissions() {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [sortField, setSortField] = useState<SortField>('launchDate');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
@@ -65,9 +74,10 @@ export default function CompletedMissions() {
   };
 
   const filteredAndSortedMissions = completedMissions
-    .filter(mission => 
+    .filter(mission =>
       mission.mission.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      mission.launchSite.toLowerCase().includes(searchTerm.toLowerCase())
+      mission.launchSite.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      mission.payload.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .sort((a, b) => {
       const aValue = a[sortField];
@@ -87,92 +97,98 @@ export default function CompletedMissions() {
     });
 
   const getStatusColor = (status: 'success' | 'failure') => {
-    return status === 'success' ? 'text-green-400' : 'text-red-400';
-  };
-
-  const getStatusDot = (status: 'success' | 'failure') => {
-    return status === 'success' ? 'bg-green-400' : 'bg-red-400';
+    return status === 'success' ? 'text-emerald-400' : 'text-red-500';
   };
 
   return (
-    <section className="bg-black py-24">
-      <div className="max-w-7xl mx-auto px-8 lg:px-16">
-        {/* Header with Search */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16">
-          <h2 className="text-white text-4xl lg:text-6xl font-light mb-8 lg:mb-0 tracking-wide">
-            COMPLETED MISSIONS
-          </h2>
-          
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search Mission Name"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-transparent border border-gray-600 rounded px-6 py-3 pr-12 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors duration-300 w-80"
-            />
-            <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+    <section className="bg-black py-24 text-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-8">
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-px w-8 bg-white/30"></div>
+              <span className="text-sm font-mono text-gray-500 tracking-widest uppercase">{t.topPage.completed.archiveLabel}</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold tracking-tighter leading-none">
+              {t.topPage.completed.title.split(' ').map((word, i) => (
+                <span key={i}>{word}<br /></span>
+              ))}
+            </h2>
+          </div>
+
+          <div className="w-full lg:w-auto">
+            <div className="relative group">
+              <input
+                type="text"
+                placeholder={t.topPage.completed.searchPlaceholder}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="bg-transparent border-b border-white/20 py-2 pr-12 text-lg font-mono text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors w-full lg:w-80"
+              />
+              <Search className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-600 group-focus-within:text-white transition-colors" size={20} />
+            </div>
           </div>
         </div>
 
         {/* Table Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-4 py-6 border-b border-gray-800 mb-8">
-          <button 
-            onClick={() => handleSort('mission')}
-            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
-          >
-            <span>MISSION</span>
-            <ArrowUpDown size={14} />
-          </button>
-          
-          <button 
-            onClick={() => handleSort('launchSite')}
-            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
-          >
-            <span>LAUNCH SITE</span>
-            <ArrowUpDown size={14} />
-          </button>
-        
-          
-          <button 
-            onClick={() => handleSort('launchDate')}
-            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
-          >
-            <span>LAUNCH DATE</span>
-            <ArrowUpDown size={14} />
-          </button>
-          
-          <button 
-            onClick={() => handleSort('status')}
-            className="flex items-center space-x-2 text-base font-mono tracking-wider text-gray-400 hover:text-white transition-colors duration-300 text-left"
-          >
-            <span>STATUS</span>
-            <ArrowUpDown size={14} />
-          </button>
+        <div className="hidden lg:grid grid-cols-12 gap-4 py-3 border-b border-white/20 mb-2 text-[10px] font-mono text-gray-500 tracking-widest uppercase">
+          <div className="col-span-3 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('mission')}>
+            {t.topPage.completed.tableHeaders.mission} <ArrowUpDown size={10} className="inline ml-1" />
+          </div>
+          <div className="col-span-3 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('launchSite')}>
+            {t.topPage.completed.tableHeaders.site} <ArrowUpDown size={10} className="inline ml-1" />
+          </div>
+          <div className="col-span-3 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('payload')}>
+            PAYLOAD <ArrowUpDown size={10} className="inline ml-1" />
+          </div>
+          <div className="col-span-2 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('launchDate')}>
+            {t.topPage.completed.tableHeaders.date} <ArrowUpDown size={10} className="inline ml-1" />
+          </div>
+          <div className="col-span-1 text-right cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('status')}>
+            {t.topPage.completed.tableHeaders.status} <ArrowUpDown size={10} className="inline ml-1" />
+          </div>
         </div>
 
         {/* Mission Rows */}
-        <div className="space-y-4">
+        <div className="space-y-0">
           {filteredAndSortedMissions.map((mission, index) => (
-            <div 
-              key={`${mission.mission}-${mission.launchDate}-${index}`} 
-              className="grid grid-cols-1 lg:grid-cols-6 gap-4 items-center py-6 border-b border-gray-800 hover:bg-gray-900 hover:bg-opacity-30 transition-colors duration-300 rounded-lg px-4"
+            <div
+              key={`${mission.mission}-${mission.launchDate}-${index}`}
+              className="group grid grid-cols-1 lg:grid-cols-12 gap-4 py-4 border-b border-white/10 items-center hover:bg-white/5 transition-colors px-2 lg:px-0"
             >
-              <span className="text-base lg:text-lg font-mono tracking-wide text-white">
-                {mission.mission}
-              </span>
+              {/* Mission Name */}
+              <div className="col-span-12 lg:col-span-3">
+                <span className="text-xl font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                  {mission.mission}
+                </span>
+              </div>
 
-              <span className="text-base lg:text-lg font-mono tracking-wider text-gray-300">
-                {mission.launchSite}
-              </span>
-              
-              <span className="text-base lg:text-lg font-mono tracking-wider text-gray-300">
-                {mission.launchDate}
-              </span>
-              
-              <div className="flex items-center space-x-3">
-                <div className={`w-3 h-3 rounded-full ${getStatusDot(mission.status)}`} />
-                <span className={`text-base lg:text-lg font-mono tracking-wider uppercase ${getStatusColor(mission.status)}`}>
+              {/* Launch Site */}
+              <div className="col-span-12 lg:col-span-3">
+                <span className="text-xs lg:text-sm font-mono text-gray-400 tracking-wider uppercase">
+                  {mission.launchSite}
+                </span>
+              </div>
+
+              {/* Payload (New Column) */}
+              <div className="col-span-12 lg:col-span-3">
+                <span className="text-xs lg:text-sm font-mono text-gray-500 tracking-wider">
+                  {mission.payload}
+                </span>
+              </div>
+
+              {/* Date */}
+              <div className="col-span-6 lg:col-span-2">
+                <span className="text-xs lg:text-sm font-mono text-gray-500">
+                  {mission.launchDate}
+                </span>
+              </div>
+
+              {/* Status */}
+              <div className="col-span-6 lg:col-span-1 text-right">
+                <span className={`text-[10px] lg:text-xs font-mono font-bold tracking-widest uppercase ${getStatusColor(mission.status)}`}>
                   {mission.status}
                 </span>
               </div>
@@ -180,10 +196,11 @@ export default function CompletedMissions() {
           ))}
         </div>
 
-        {/* Results count */}
-        <div className="md:mt-12 mt-32 text-center">
-          <span className="text-sm font-mono tracking-wider text-gray-400">
-            SHOWING {filteredAndSortedMissions.length} OF 21 MISSIONS
+        {/* Footer Stats */}
+        <div className="mt-8 flex justify-between items-center text-[10px] font-mono text-gray-600 tracking-widest border-t border-white/10 pt-4">
+          <span>{t.topPage.completed.footer.version}</span>
+          <span>
+            {t.topPage.completed.footer.displaying} {filteredAndSortedMissions.length} / {completedMissions.length} RECORDS
           </span>
         </div>
       </div>

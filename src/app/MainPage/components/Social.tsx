@@ -1,144 +1,205 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import {
-  Play,
-} from "lucide-react"
-import { fetchsocialmedia } from "../social/fetchsocialmedia"
-type YoutubeVideo = {
-  id: number | string
-  title: string
-  thumbnail: string
-  duration: string
-  views: string
-  publishedAt: string
-  url?: string
+"use client"
+import { Youtube, Twitter, ExternalLink, Play, MessageSquare, Heart, Repeat } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+
+// Types
+interface YoutubeVideo {
+  id: { videoId: string };
+  snippet: {
+    title: string;
+    thumbnails: { high: { url: string } };
+    publishedAt: string;
+  };
+  statistics?: { viewCount: string };
 }
 
+async function fetchsocialmedia() {
+  const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+  const CHANNEL_ID = 'UC1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q'; // Replace with actual channel ID
 
-export default async function Social() {
+  // Mock data for development if no API key
+  if (!YOUTUBE_API_KEY) {
+    return new Response(JSON.stringify([
+      {
+        id: { videoId: 'video1' },
+        snippet: {
+          title: 'C-103J Launch Highlights',
+          thumbnails: { high: { url: 'https://images.pexels.com/photos/796206/pexels-photo-796206.jpeg' } },
+          publishedAt: '2024-03-15T10:00:00Z'
+        },
+        statistics: { viewCount: '1200' }
+      },
+      {
+        id: { videoId: 'video2' },
+        snippet: {
+          title: 'Engine Test Fire - J-6i',
+          thumbnails: { high: { url: 'https://images.pexels.com/photos/796220/pexels-photo-796220.jpeg' } },
+          publishedAt: '2024-02-20T14:30:00Z'
+        },
+        statistics: { viewCount: '850' }
+      }
+    ]));
+  }
 
-  const data = await fetchsocialmedia()
-  console.log("Social data fetched:", data);
-  const youtubeVideos = await data.json() as YoutubeVideo[] 
-  console.log("Fetched YouTube Videos:", youtubeVideos);
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=2`
+  );
+  return res;
+}
+
+export default function Social() {
+  const { t } = useLanguage();
+  const [youtubeVideos, setYoutubeVideos] = useState<YoutubeVideo[]>([]);
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      try {
+        const data = await fetchsocialmedia();
+        const videos = await data.json() as YoutubeVideo[];
+        setYoutubeVideos(videos);
+      } catch (error) {
+        console.error("Failed to fetch videos", error);
+      }
+    };
+    loadVideos();
+  }, []);
 
   return (
-    <section className="bg-black text-white text-foreground">
-      <section className="mt-8">
-        <div className="flex items-center justify-between mb-8 px-8">
-          <h2 className="text-4xl lg:text-6xl font-light text-white">LATEST VIDEOS</h2>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-8">
-          {youtubeVideos.map((video, index) => (
-            <Card
-              key={`youtube-${video.id}-${index}`}
-              className="overflow-hidden border-border bg-background hover:border-primary/50 transition-colors group cursor-pointer"
-            >
-              <div className="relative">
-               
-                <img
-                  src={video.thumbnail || "/placeholder.svg"}
-                  alt={video.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              
-                 <a href={video.url || "#"} target="_blank">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                  <div className="bg-primary/90 rounded-full p-3 group-hover:scale-110 transition-transform">
-                    <Play className="h-6 w-6 text-white fill-white" />
-                  </div>
-                </div>
-                  </a>
-                <Badge variant="secondary" className="absolute bottom-2 right-2 bg-black/80 text-white">
-                  {video.duration}
-                </Badge>
-              </div>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-foreground text-balance line-clamp-2">
-                  {video.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>{video.views}</span>
-                  <span>{video.publishedAt}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+    <section className="bg-black py-32 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
 
-      {/* Social Media Posts Section */}
-      <section className="mt-20">
-        <div className="flex items-center justify-between mb-8 px-8">
-          <h2 className="text-4xl lg:text-6xl font-light text-white">SOCIAL UPDATES</h2>
-          <div className="flex gap-2 px-8">
-          </div>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-3 px-8">
-          <blockquote className="twitter-tweet"><p lang="ja" dir="ltr">CREATEは、毎週金曜日に全体MTGを行っています✨️ 各班のメンバーが集まり、情報交換・進捗確認を行います🧑‍🤝‍🧑全体MTGは見学👀も受け付けていますので、気になる方は是非DM・メールからご連絡を✉️ <a href="https://t.co/UGGRYSFa5n">pic.twitter.com/UGGRYSFa5n</a></p>&mdash; 東京科学大学ロケットサークル CREATE (@CREATE_rocket) <a href="https://twitter.com/CREATE_rocket/status/1969015431332593972?ref_src=twsrc%5Etfw">September 19, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-          <blockquote className="twitter-tweet"><p lang="ja" dir="ltr">先月の能代宇宙イベント結果についてご報告です‼️ロケット「C-83LM」は打上げ後すぐに異常燃焼により安全装置が作動し、推力を失い海へと落下する形となりました。まずは原因究明に勤しみ、今後のエンジン開発に努めてまいります。ご協力・ご支援賜りました全ての皆様、ありがとうございました🙇‍♀️ <a href="https://t.co/Unnro4pdMz">pic.twitter.com/Unnro4pdMz</a></p>&mdash; 東京科学大学ロケットサークル CREATE (@CREATE_rocket) <a href="https://twitter.com/CREATE_rocket/status/1967794463377592393?ref_src=twsrc%5Etfw">September 16, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-          <blockquote className="twitter-tweet"><p lang="ja" dir="ltr">＼＼＼㊗️燃焼実験成功🎊🎉／／／新型自作エンジンJ-6iの燃焼に成功しました‼️‼️本エンジンは団体初の試みとしてフラクタル旋回形状の燃料🔥を採用しており、設計通りの高推力が確認されました🤩<a href="https://twitter.com/hashtag/CREATE?src=hash&amp;ref_src=twsrc%5Etfw">#CREATE</a> <a href="https://twitter.com/hashtag/ScienceTokyo?src=hash&amp;ref_src=twsrc%5Etfw">#ScienceTokyo</a> <a href="https://t.co/YPKcNwJVXv">pic.twitter.com/YPKcNwJVXv</a></p>&mdash; 東京科学大学ロケットサークル CREATE (@CREATE_rocket) <a href="https://twitter.com/CREATE_rocket/status/1965986888852119995?ref_src=twsrc%5Etfw">September 11, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-          {/* {socialPosts.map((post, index) => (
-            <Card key={`social-${post.platform}-${post.id}-${index}`} className="border-border bg-background hover:border-primary/50 transition-colors">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                      <Rocket className="h-4 w-4 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">SpaceX</p>
-                      <p className="text-xs text-muted-foreground">@spacex • {post.timestamp}</p>
+          {/* YouTube Section */}
+          <div className="space-y-12">
+            <div className="flex items-center justify-between border-b border-white/20 pb-6">
+              <div className="flex items-center gap-4">
+                <h2 className="text-2xl font-mono tracking-widest text-white">{t.topPage.social.youtubeTitle}</h2>
+              </div>
+              <Link
+                href="https://youtube.com"
+                className="group flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors"
+                target="_blank"
+              >
+                CHANNEL_LINK <ExternalLink className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="space-y-8">
+              {youtubeVideos.map((video) => (
+                <div key={video.id.videoId} className="group cursor-pointer">
+                  <div className="relative aspect-video mb-4 overflow-hidden border border-white/10">
+                    <img
+                      src={video.snippet.thumbnails.high.url}
+                      alt={video.snippet.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-colors">
+                      <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform">
+                        <Play className="w-6 h-6 text-white fill-white" />
+                      </div>
                     </div>
                   </div>
-                  <Badge variant="outline" className="text-xs text-foreground border-border">
-                    {post.platform}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-foreground mb-4 text-pretty">{post.content}</p>
-                {"image" in post && post.image && (
-                  <img
-                    src={post.image || "/placeholder.svg"}
-                    alt="Social media post"
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                )}
-                <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-                    <Heart className="h-4 w-4" />
-                    <span>
-                      {post.likes?.toLocaleString()}
+                  <div className="flex justify-between items-start gap-4">
+                    <h3 className="text-lg font-bold text-white leading-tight group-hover:text-red-500 transition-colors">
+                      {video.snippet.title}
+                    </h3>
+                    <span className="text-xs font-mono text-gray-500 whitespace-nowrap">
+                      {video.statistics?.viewCount} {t.topPage.social.views}
                     </span>
                   </div>
-                  {post.platform === "X" && (
-                    <>
-                      <div className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-                        <Share className="h-4 w-4" />
-                        <span>{(post as XPost).retweets?.toLocaleString()}</span>
-                      </div>
-                      <div className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-                        <MessageCircle className="h-4 w-4" />
-                        <span>{(post as XPost).replies?.toLocaleString()}</span>
-                      </div>
-                    </>
-                  )}
-                  {post.platform === "Instagram" && (
-                    <div className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-                      <MessageCircle className="h-4 w-4" />
-                      <span>{(post as InstagramPost).comments?.toLocaleString()}</span>
-                    </div>
-                  )}
                 </div>
-              </CardContent>
-            </Card>
-          ))} */}
+              ))}
+            </div>
+          </div>
+
+          {/* Twitter/X Section */}
+          <div className="space-y-12">
+            <div className="flex items-center justify-between border-b border-white/20 pb-6">
+              <div className="flex items-center gap-4">
+                <h2 className="text-2xl font-mono tracking-widest text-white">{t.topPage.social.twitterTitle}</h2>
+              </div>
+              <Link
+                href="https://twitter.com"
+                className="group flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors"
+                target="_blank"
+              >
+                FEED_LINK <ExternalLink className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="relative min-h-[600px] border border-white/10 bg-white/5 p-8">
+              {/* Decorative Elements */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/30" />
+              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/30" />
+              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/30" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/30" />
+
+              {/* Mock Tweet */}
+              <div className="space-y-8">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-gray-800 rounded-full flex-shrink-0" />
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-white">CREATE Rocket Project</span>
+                      <span className="text-sm text-gray-500">@create_rocket</span>
+                      <span className="text-xs text-gray-600">· 2h</span>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed">
+                      Successful static fire test of the new J-6i hybrid engine. Data looks nominal. Next stop: Flight integration. 🚀 #rocketry #space #engineering
+                    </p>
+                    <div className="flex gap-6 text-gray-500 text-sm pt-2">
+                      <button className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                        <MessageSquare className="w-4 h-4" /> 12
+                      </button>
+                      <button className="flex items-center gap-2 hover:text-green-400 transition-colors">
+                        <Repeat className="w-4 h-4" /> 45
+                      </button>
+                      <button className="flex items-center gap-2 hover:text-red-500 transition-colors">
+                        <Heart className="w-4 h-4" /> 128
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Second Tweet */}
+                <div className="flex gap-4 pt-8 border-t border-white/10">
+                  <div className="w-12 h-12 bg-gray-800 rounded-full flex-shrink-0" />
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-white">CREATE Rocket Project</span>
+                      <span className="text-sm text-gray-500">@create_rocket</span>
+                      <span className="text-xs text-gray-600">· 1d</span>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed">
+                      Mission C-103J payload integration begins today. The team is working around the clock to meet the launch window.
+                    </p>
+                    <div className="aspect-video w-full bg-gray-800 rounded mt-4 overflow-hidden relative group cursor-pointer">
+                      <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                        [IMAGE_PLACEHOLDER]
+                      </div>
+                    </div>
+                    <div className="flex gap-6 text-gray-500 text-sm pt-2">
+                      <button className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                        <MessageSquare className="w-4 h-4" /> 8
+                      </button>
+                      <button className="flex items-center gap-2 hover:text-green-400 transition-colors">
+                        <Repeat className="w-4 h-4" /> 22
+                      </button>
+                      <button className="flex items-center gap-2 hover:text-red-500 transition-colors">
+                        <Heart className="w-4 h-4" /> 89
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
     </section>
-  )
+  );
 }

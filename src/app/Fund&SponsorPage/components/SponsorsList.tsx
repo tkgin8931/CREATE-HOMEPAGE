@@ -2,19 +2,20 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { useLanguage } from "@/context/LanguageContext"
 
 type Sponsor = {
   name: string
   logo: string
   url: string
+  id: string
 }
 
 const sponsors: Sponsor[] = [
-  { name: "サイレックス・テクノロジー株式会社", logo: "/silex.png", url: "https://example.com" },
-  { name: "工機ホールディングス株式会社", logo: "/hikoki.jpg", url: "https://example.com" },
-  { name: "ZONeエナジー", logo: "/zone.jpg", url: "https://example.com" },
-  { name: "NEWS COMPANY", logo: "/newscompany.png", url: "https://example.com" },
+  { name: "サイレックス・テクノロジー株式会社", logo: "/silex.png", url: "https://example.com", id: "01" },
+  { name: "工機ホールディングス株式会社", logo: "/hikoki.jpg", url: "https://example.com", id: "02" },
+  { name: "ZONeエナジー", logo: "/zone.jpg", url: "https://example.com", id: "03" },
+  { name: "NEWS COMPANY", logo: "/newscompany.png", url: "https://example.com", id: "04" },
 ]
 
 const supportingOrganizations = [
@@ -34,107 +35,135 @@ const pastSponsors = [
 ]
 
 export default function Sponsors() {
+  const { t } = useLanguage();
+
   return (
-    <section className="py-12">
-  <div className="px-4 text-white bg-transparent">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl font-bold mb-8">スポンサー</h2>
-          {/* モダンなアンダーラインでセクション区切り */}
-          <div className="w-full flex mb-4">
-            <div className="h-px w-2/3 bg-white" />
+    <section className="py-12 relative">
+      <div className="px-4 text-white">
+        <div className="max-w-6xl mx-auto">
+
+          {/* Section Header */}
+          <div className="flex items-center gap-4 mb-12">
+            <div>
+              <h2 className="text-4xl font-bold tracking-tighter">{t.fundPage.sponsors.title}</h2>
+            </div>
           </div>
-          <p className="text-lg mb-6">
-            CREATEは多くの企業や個人の方々の支援を受けており、皆様のご支援が私たちの開発を強く後押ししてくださっています。
-          </p>
-          <p className="text-lg mb-6">
-            支援をして頂いている方々をここで紹介致します。これからもどうぞよろしくお願いします。
-          </p>
-          <p className="text-lg mb-6">
-            また、CREATEでは新規協賛先の募集もしております。
-            協賛をお考え頂ける企業・団体様は要件を確認の上、お問い合わせよりご連絡をよろしくお願いします。
+
+          <p className="text-lg text-gray-400 mb-12 max-w-3xl leading-relaxed">
+            {t.fundPage.sponsors.description}
           </p>
 
-          <h3 className="text-2xl font-semibold mt-12 mb-6">協賛企業</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {sponsors.map((sponsor) => (
-              <Card key={sponsor.name} className="hover:shadow-lg transition-shadow duration-600 bg-transparent w-full">
-                <CardContent className="p-4 bg-transparent">
-                  <a href={sponsor.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                    <div className={`${
-                      sponsor.name === "NEWS COMPANY" ? "bg-transparent p-2" :""
-                    }`}
-                    >
+          {/* Current Sponsors Grid */}
+          <div className="mb-20">
+            <div className="flex items-center gap-2 mb-6 text-white">
+              <h3 className="text-xl font-bold tracking-tight">{t.fundPage.sponsors.active}</h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {sponsors.map((sponsor) => (
+                <a
+                  key={sponsor.name}
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block"
+                >
+                  <div className="relative bg-zinc-950 border border-white/10 p-6 h-full flex flex-col items-center justify-between hover:border-white/30 transition-colors duration-300">
+
+                    <div className="w-full aspect-[3/2] flex items-center justify-center mb-4 bg-white/5 p-4">
                       <Image
                         src={sponsor.logo || "/placeholder.svg"}
                         alt={`${sponsor.name} logo`}
                         width={200}
                         height={100}
-                        className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-contain transition-all duration-500"
                       />
                     </div>
-                    <p className="mt-2 text-center font-medium text-white/90">{sponsor.name}</p>
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <h3 className="text-2xl font-semibold mt-12 mb-6">支援企業・団体</h3>
-          <ul className="list-disc list-inside mb-8">
-            {supportingOrganizations.map((org, index) => (
-              <li key={index} className="mb-2 text-white/90">
-                {org}
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="text-2xl font-semibold mt-12 mb-6">過去の協賛・支援企業</h3>
-          <ul className="list-disc list-inside mb-8">
-            {pastSponsors.map((sponsor, index) => (
-              <li key={index} className="mb-2">
-                {sponsor}
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="text-2xl font-semibold mt-12 mb-6">協賛・支援の要件等</h3>
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-xl font-semibold mb-3">協賛</h4>
-              <p className="mb-3">
-                活動趣旨にご理解頂き、金銭・物資・サービス等でCREATEを支援頂いた協賛団体様には以下のような返礼を致します。
-              </p>
-              <ul className="list-disc list-inside">
-                <li>HPでのお名前、ロゴ、リンクの掲載、紹介</li>
-                <li>SNSでの紹介、拡散（希望があれば）</li>
-                <li>ロケットや自作エンジンへのロゴ掲載（大きさは支援内容に応じます）</li>
-                <li>プロジェクト報告書の送付</li>
-                <li>年次報告書の送付</li>
-                <li>その他ご相談に応じます</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xl font-semibold mb-3">支援</h4>
-              <p className="mb-3">
-                CREATEが申し込んだキャンペーン等を通じて金銭・物資・サービス等で支援を頂いた支援団体様には以下のような返礼を致します。
-              </p>
-              <ul className="list-disc list-inside">
-                <li>HPでのお名前、ロゴ、リンクの掲載</li>
-                <li>キャンペーンの条件に沿った返礼（写真の送付、SNSでの紹介，アンケート等）</li>
-                <li>ロケットや自作エンジンへのロゴ掲載（支援内容が一定以上の場合）</li>
-                <li>プロジェクト報告書の送付（希望があれば）</li>
-              </ul>
+                    <p className="text-sm font-bold text-center text-gray-300 group-hover:text-white transition-colors">
+                      {sponsor.name}
+                    </p>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold">
-              <a href="/ContactPage">お問い合わせ</a>
-            </Button>
+          {/* Supporting Organizations */}
+          <div className="grid md:grid-cols-2 gap-12 mb-20">
+            <div>
+              <div className="flex items-center gap-2 mb-6 text-white">
+                <h3 className="text-xl font-bold tracking-tight">{t.fundPage.sponsors.supporting}</h3>
+              </div>
+              <div className="bg-zinc-950 border border-white/10 p-6">
+                <ul className="space-y-4">
+                  {supportingOrganizations.map((org, index) => (
+                    <li key={index} className="flex items-start gap-3 text-gray-300">
+                      <span className="w-1.5 h-1.5 bg-gray-500 rounded-full mt-2 flex-shrink-0" />
+                      <span>{org}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Past Sponsors */}
+            <div>
+              <div className="flex items-center gap-2 mb-6 text-white">
+                <h3 className="text-xl font-bold tracking-tight">{t.fundPage.sponsors.archived}</h3>
+              </div>
+              <div className="bg-zinc-950 border border-white/10 p-6">
+                <ul className="grid grid-cols-1 gap-3">
+                  {pastSponsors.map((sponsor, index) => (
+                    <li key={index} className="flex items-center gap-3 text-gray-400 text-sm">
+                      <span className="w-1.5 h-1.5 bg-gray-600 rounded-full" />
+                      {sponsor}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
+
+          {/* Requirements Section */}
+          <div className="border-t border-white/10 pt-12">
+            <h3 className="text-2xl font-bold mb-8 text-center">{t.fundPage.sponsors.protocols}</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-zinc-950 border border-white/10 p-8">
+                <h4 className="text-lg font-bold text-white mb-4">{t.fundPage.sponsors.sponsorship.title}</h4>
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                  {t.fundPage.sponsors.sponsorship.desc}
+                </p>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  {t.fundPage.sponsors.sponsorship.benefits.map((benefit, i) => (
+                    <li key={i} className="flex gap-2 text-gray-500">{benefit}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-zinc-950 border border-white/10 p-8">
+                <h4 className="text-lg font-bold text-white mb-4">{t.fundPage.sponsors.support.title}</h4>
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                  {t.fundPage.sponsors.support.desc}
+                </p>
+                <ul className="space-y-2 text-sm text-gray-300">
+                  {t.fundPage.sponsors.support.benefits.map((benefit, i) => (
+                    <li key={i} className="flex gap-2 text-gray-500">{benefit}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-12 text-center">
+              <Button asChild size="lg" className="bg-white text-black hover:bg-gray-200 font-bold px-8 py-6 rounded-none">
+                <a href="/ContactPage" className="flex items-center gap-2">
+                  <span className="tracking-widest">{t.fundPage.sponsors.becomePartner}</span>
+                </a>
+              </Button>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
   )
 }
-

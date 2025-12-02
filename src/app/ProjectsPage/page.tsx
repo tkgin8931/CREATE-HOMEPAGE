@@ -1,152 +1,179 @@
 "use client"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { CalendarDays, Rocket, Zap, Filter } from "lucide-react"
+
+import { useState, useEffect } from "react"
 import { projectsData } from "./ProjectData"
 import Footer from "@/components/ui/Footer"
 import Header from "@/components/ui/Header"
 import Image from "next/image"
-import { useState } from "react"
+import { ArrowUpRight, Rocket, Zap, Disc } from "lucide-react"
+import { motion } from "framer-motion"
 
-const categories = ["すべて", "ロケット", "エンジン","CanSat"]
+const categories = ["ALL", "ROCKET", "ENGINE", "CANSAT"]
+
 export default function ProjectsPage() {
-  const [selectedCategory,SetSerectedCategory] = useState("すべて");
+  const [activeCategory, setActiveCategory] = useState("ALL")
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null)
+
+  const filteredProjects = projectsData.filter(project =>
+    activeCategory === "ALL" || project.category.toUpperCase() === activeCategory
+  )
+
+  const scrollToProject = (id: string) => {
+    const element = document.getElementById(`project-${id}`)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
       <Header />
-      <div className="relative w-full min-h-[400px]">
-        <Image
-          src="/79-CAD.png"
-          alt="Projects Hero"
-          fill
-          style={{ objectFit: "cover" }}
-          priority
-          sizes="100vw"
-          className="w-full h-full brightness-75"
-        />
-        {/* 下部グラデーションを濃く・広く */}
-        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
-      </div>
-      {/* Main Content を画像に重ねる */}
-      <main className="max-w-7xl mx-auto px-6 py-12 -mt-32 relative z-10">
-        
 
+      <main className="pt-32 pb-20">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-12">
 
-        {/* Filter Section */}
-  <div className="flex flex-col sm:flex-row gap-4 mb-12">
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={category === selectedCategory ? "default" : "outline"}
-                size="sm"
-                className="rounded-full bg-black text-white"
-                onClick={() => SetSerectedCategory(category)}
-              >
-                <Filter className="h-4 w-4 mr-2" />
-                {category}
-              </Button>
-            ))}
-          </div>
-          {/* <Button variant="outline" size="sm" className="sm:ml-auto bg-gray-900 text-white border-gray-700">
-            <Search className="h-4 w-4 mr-2" />
-            検索
-          </Button> */}
-        </div>
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
 
-        {/* Projects Grid */}
-  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.filter((project)=>{
-            return selectedCategory === "すべて" || project.category === selectedCategory;
-          }).map((project) => (
-            <Card
-              key={project.id}
-              className="overflow-hidden border border-gray-700 bg-black/80 text-white hover:border-blue-400 transition-colors group rounded-xl shadow-lg"
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={
-                    project.thumbnail || "/placeholder.svg?height=200&width=400&query=rocket engine space technology"
-                  }
-                  alt={project.name}
-                  className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <Badge variant="secondary" className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm text-white">
-                  {project.category === "ロケット" ? (
-                    <Rocket className="h-3 w-3 mr-1" />
-                  ) : (
-                    <Zap className="h-3 w-3 mr-1" />
-                  )}
-                  {project.category}
-                </Badge>
-                {project.period.includes("予定") && (
-                  <Badge variant="default" className="absolute top-4 right-4 bg-primary/90 text-primary-foreground">
-                    予定
-                  </Badge>
-                )}
-                {project.period.includes("断念") && (
-                  <Badge variant="destructive" className="absolute top-4 right-4">
-                    中止
-                  </Badge>
-                )}
+            {/* Sticky Sidebar */}
+            <aside className="lg:w-1/4 lg:h-[calc(100vh-8rem)] lg:sticky lg:top-32 flex flex-col justify-between">
+              <div>
+                <h1 className="text-6xl font-bold tracking-tighter mb-12 leading-none">
+                  PROJECT<br />ARCHIVE
+                </h1>
+
+                {/* Category Filter */}
+                <div className="flex flex-wrap gap-4 mb-12">
+                  {categories.map(cat => (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveCategory(cat)}
+                      className={`text-sm font-mono tracking-widest transition-colors ${activeCategory === cat ? "text-white underline underline-offset-4" : "text-gray-600 hover:text-gray-400"
+                        }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Project Navigation List */}
+                <nav className="hidden lg:block space-y-2">
+                  {filteredProjects.map(project => (
+                    <button
+                      key={project.id}
+                      onClick={() => scrollToProject(project.id)}
+                      onMouseEnter={() => setHoveredProject(project.id)}
+                      onMouseLeave={() => setHoveredProject(null)}
+                      className={`block text-left text-sm transition-all duration-300 ${hoveredProject === project.id ? "text-white translate-x-2" : "text-gray-600"
+                        }`}
+                    >
+                      {project.name}
+                    </button>
+                  ))}
+                </nav>
               </div>
-              <CardHeader>
-                <CardTitle className="text-xl text-white text-balance">{project.name}</CardTitle>
-                <CardDescription className="flex items-center gap-2 text-gray-300">
-                  <CalendarDays className="h-4 w-4" />
-                  {project.period}
-                </CardDescription>
-                {/* 区切りの細いアンダーライン */}
-                {/* <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent my-3" /> */}
-              </CardHeader>
-              <CardContent>
-                {project.category === "ロケット" && (
-                  <div className="flex flex-col gap-2 mt-2 text-base font-mono font-normal text-white">
-                    <div>
-                      <span className="block">Altitude:</span>
-                      <span className="text-white/70 ml-2">{project.altitude ?? "-"}</span>
-                    </div>
-                    <div>
-                      <span className="block">Length:</span>
-                      <span className="text-white/70 ml-2">{project.length ?? "-"}</span>
-                    </div>
-                    <div>
-                      <span className="block">Weight:</span>
-                      <span className="text-white/70 ml-2">{project.weight ?? "-"}</span>
-                    </div>
-                  </div>
-                )}
-                {project.category === "エンジン" && (
-                  <div className="flex flex-col gap-2 mt-2 text-base font-mono font-normal text-white">
-                    <div>
-                      <span className="block">Thrust:</span>
-                      <span className="text-white/70 ml-2">{project.thrust ?? "-"}</span>
-                    </div>
-                    <div>
-                      <span className="block">BurnCount:</span>
-                      <span className="text-white/70 ml-2">{project.burnCount ?? "-"}</span>
-                    </div>
-                  </div>
-                )}
-                {/* 情報とキャプションの間に細いアンダーライン */}
-                {(project.category === "ロケット" || project.category === "エンジン") && project.caption && (
-                  <div className="w-full h-px bg-gray-700 my-4" />
-                )}
-                {project.caption && (
-                  <div className="text-sm text-white/80 font-sans">
-                    {project.caption}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
-        
+              <div className="hidden lg:block text-xs text-gray-700 font-mono">
+                SCROLL TO EXPLORE ///<br />
+                CREATE ARCHIVE 2016-2025
+              </div>
+            </aside>
+
+            {/* Main Content Feed */}
+            <div className="lg:w-3/4 space-y-32">
+              {filteredProjects.map((project, index) => (
+                <article
+                  key={project.id}
+                  id={`project-${project.id}`}
+                  className="group relative"
+                >
+                  {/* Project Header */}
+                  <div className="flex items-end justify-between mb-6 border-b border-white/10 pb-6">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-xs font-mono text-gray-500">0{index + 1}</span>
+                        <span className="px-2 py-0.5 border border-white/20 rounded-full text-[10px] uppercase tracking-wider text-gray-400">
+                          {project.category}
+                        </span>
+                      </div>
+                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">{project.name}</h2>
+                    </div>
+                    <div className="text-right hidden sm:block">
+                      <div className="text-sm font-mono text-gray-500">{project.period}</div>
+                    </div>
+                  </div>
+
+                  {/* Main Visual */}
+                  <div className="relative aspect-video w-full overflow-hidden bg-gray-900 mb-8">
+                    <Image
+                      src={project.thumbnail || "/placeholder.svg"}
+                      alt={project.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                  </div>
+
+                  {/* Details Grid */}
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="md:col-span-2">
+                      <p className="text-lg text-gray-300 leading-relaxed font-light">
+                        {project.caption}
+                      </p>
+                    </div>
+
+                    <div className="space-y-4 font-mono text-sm border-l border-white/10 pl-6">
+                      {project.category === "ロケット" && (
+                        <>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">ALTITUDE</span>
+                            <span>{project.altitude || "N/A"}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">LENGTH</span>
+                            <span>{project.length || "N/A"}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">WEIGHT</span>
+                            <span>{project.weight || "N/A"}</span>
+                          </div>
+                        </>
+                      )}
+                      {project.category === "エンジン" && (
+                        <>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">THRUST</span>
+                            <span>{project.thrust || "N/A"}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-600">BURN COUNT</span>
+                            <span>{project.burnCount || "N/A"}</span>
+                          </div>
+                        </>
+                      )}
+                      <div className="pt-4 mt-4 border-t border-white/10 flex justify-between items-center text-gray-500">
+                        <span>STATUS</span>
+                        {project.period.includes("予定") ? (
+                          <span className="flex items-center gap-2 text-yellow-500">
+                            <Disc className="w-3 h-3 animate-pulse" /> IN PROGRESS
+                          </span>
+                        ) : project.period.includes("断念") ? (
+                          <span className="text-red-500">TERMINATED</span>
+                        ) : (
+                          <span className="text-green-500">COMPLETED</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                </article>
+              ))}
+            </div>
+
+          </div>
+        </div>
       </main>
 
-     <Footer /> 
+      <Footer />
     </div>
   )
 }

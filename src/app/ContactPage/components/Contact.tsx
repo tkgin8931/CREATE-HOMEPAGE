@@ -1,52 +1,65 @@
-
 "use client";
 
 import React from "react";
-import { Form, Input, Button } from "antd";
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 36 },
-    sm: { span: 6 },
-  },
-  wrapperCol: {
-    xs: { span: 36 },
-    sm: { span: 14 },
-  },
-};
+import { Send } from 'lucide-react';
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
-  const [form] = Form.useForm();
+  const { t } = useLanguage();
+
   return (
-    <section>
-      <h2 className="text-2xl text-white font-mono font-bold mb-6">お問い合わせフォーム</h2>
-      <p className="text-white font-mono mb-4">ご不明な点がございましたら、お気軽にお問い合わせください。</p>
-      <Form
-        {...formItemLayout}
-        form={form}
-        variant="underlined"
-        layout="vertical"
-        style={{ maxWidth: 800 }}
-        className="mx-auto"
-      >
-        <Form.Item className="bg-transparent" label={<span className="text-white">お名前</span>} name="Name" rules={[{ required: true, message: 'お名前は必須です。' }]}> 
-          <Input className="text-white bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent" />
-        </Form.Item>
-        <Form.Item className="bg-transparent" label={<span className="text-white">ご所属</span>} name="Affiliation">
-          <Input className="text-white bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent" />
-        </Form.Item>
-        <Form.Item className="bg-transparent" label={<span className="text-white">メールアドレス</span>} name="Email" rules={[{ required: true, message: 'メールアドレスは必須です。' }]}> 
-          <Input className="text-white bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent" />
-        </Form.Item>
-        <Form.Item className="bg-transparent" label={<span className="text-white">お問い合わせ内容</span>} name="Message" rules={[{ required: true, message: 'お問い合わせ内容は必須です。' }]}> 
-          <Input.TextArea className="text-white bg-transparent hover:bg-transparent focus:bg-transparent active:bg-transparent" />
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
-          <Button className="bg-transparent text-white border border-white hover:scale-105 hover:bg-transparent" type="primary" htmlType="submit">
-            送信する
-          </Button>
-        </Form.Item>
-      </Form>
+    <section className="mb-20">
+      <div className="flex items-center gap-3 mb-8 text-white">
+        <h2 className="text-xl font-bold tracking-tight">{t.contactPage.form.title}</h2>
+      </div>
+
+      <div className="bg-zinc-950 border border-white/10 p-8 rounded-lg">
+        <form className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <label className="text-xs font-mono text-gray-500 uppercase tracking-wider">{t.contactPage.form.name}</label>
+              <input
+                type="text"
+                className="w-full bg-black border-b border-white/20 focus:border-white transition-colors py-2 text-white outline-none rounded-none placeholder:text-gray-700"
+                placeholder={t.contactPage.form.namePlaceholder}
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-mono text-gray-500 uppercase tracking-wider">{t.contactPage.form.email}</label>
+              <input
+                type="email"
+                className="w-full bg-black border-b border-white/20 focus:border-white transition-colors py-2 text-white outline-none rounded-none placeholder:text-gray-700"
+                placeholder={t.contactPage.form.emailPlaceholder}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-mono text-gray-500 uppercase tracking-wider">{t.contactPage.form.subject}</label>
+            <input
+              type="text"
+              className="w-full bg-black border-b border-white/20 focus:border-white transition-colors py-2 text-white outline-none rounded-none placeholder:text-gray-700"
+              placeholder={t.contactPage.form.subjectPlaceholder}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-mono text-gray-500 uppercase tracking-wider">{t.contactPage.form.message}</label>
+            <textarea
+              rows={6}
+              className="w-full bg-black border-b border-white/20 focus:border-white transition-colors py-2 text-white outline-none rounded-none resize-none placeholder:text-gray-700"
+              placeholder={t.contactPage.form.messagePlaceholder}
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full md:w-auto px-12 py-4 bg-white text-black font-bold hover:bg-gray-200 transition-colors text-sm tracking-widest"
+          >
+            {t.contactPage.form.submit}
+          </button>
+        </form>
+      </div>
     </section>
   );
 }

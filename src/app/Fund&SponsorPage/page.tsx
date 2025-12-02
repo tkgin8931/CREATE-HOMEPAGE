@@ -3,111 +3,126 @@
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import Sponsors from "./components/SponsorsList";
-import FundSupport from "./components/Fund-Spport";
+import FundSupport from "./components/Fund-Support";
 import Particles from "./components/background";
+import { Award, CheckCircle, Users, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 
-export default function TechPage() {
-    return (
-        <div className="min-h-screen flex flex-col justify-between relative bg-black"> 
-            {/* LightRaysを絶対背景に */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                 <Particles
-                    particleColors={['#ffffff', '#ffffff']}
-                     particleCount={200}
-                    particleSpread={10}
-                    speed={0.1}
-                    particleBaseSize={100}
-                    moveParticlesOnHover={false}
-                    alphaParticles={false}
-                    disableRotation={false}
-                />
+export default function FundPage() {
+  const { t } = useLanguage();
+
+  return (
+    <div className="flex flex-col justify-between relative bg-black">
+      {/* Background Particles */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <Particles
+          particleColors={['#444444', '#666666']}
+          particleCount={150}
+          particleSpread={15}
+          speed={0.2}
+          particleBaseSize={80}
+          moveParticlesOnHover={false}
+          alphaParticles={true}
+          disableRotation={false}
+        />
+      </div>
+      <Header />
+
+      <main className="pt-32 relative z-10">
+
+        {/* Crowdfunding Success Banner - Open Layout */}
+        <div className="w-full border-b border-white/10 bg-gradient-to-b from-black via-zinc-900 to-black pb-24 mb-24 relative overflow-hidden">
+
+          {/* Background Decor - Moved to outer container for better clipping */}
+          <div className="absolute top-0 left-0 opacity-[0.03] pointer-events-none select-none">
+            <Award className="w-[500px] h-[500px] text-white -translate-x-1/4 -translate-y-1/4" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 pt-12">
+
+            <div className="grid lg:grid-cols-12 gap-16 items-start relative">
+
+              {/* Left Column: Impact Numbers */}
+              <div className="lg:col-span-5 relative z-10 pt-8">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="px-3 py-1 text-green-400 text-xs font-mono tracking-widest uppercase rounded-full flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                    {t.fundPage.banner.mission}
+                  </div>
+                </div>
+
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-4 leading-none">
+                  {t.fundPage.banner.title}
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
+                    {t.fundPage.banner.success}
+                  </span>
+                </h1>
+
+                <div className="mt-12">
+                  <div className="text-sm text-gray-500 font-mono uppercase tracking-wider mb-2">{t.fundPage.banner.totalFunds}</div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl md:text-8xl font-light text-white font-mono tracking-tighter">
+                      ¥3,660,000
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 mt-6 text-gray-400 font-mono text-sm border-l-2 border-emerald-500/30 pl-4">
+                    <Users className="w-4 h-4" />
+                    <span>{t.fundPage.banner.supporters}: <span className="text-white font-bold">117</span></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Narrative & Supporters */}
+              <div className="lg:col-span-7 relative z-10 lg:pt-8 lg:pl-12 lg:border-l border-white/10">
+                <div className="prose prose-invert max-w-none">
+                  <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light mb-8">
+                    {t.fundPage.banner.message}
+                  </p>
+                  <p className="text-gray-400 leading-relaxed mb-12">
+                    {t.fundPage.banner.description}
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Special Thanks</div>
+                  <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm font-mono text-gray-400">
+                    {["A. Shimizu", "Manabu Kodama", "Daikin Industries", "Hisao Taki", "Shota Nakamura", "Pablo", "Mirai Creation Investments", "Tsunehiro Miyamoto", "ryo", "Takeshi Wada"].map((name, i) => (
+                      <span key={i} className="hover:text-emerald-400 transition-colors cursor-default border-b border-transparent hover:border-emerald-500/30 pb-0.5">
+                        {name}
+                      </span>
+                    ))}
+                    <span className="text-gray-600">+107 others</span>
+                  </div>
+
+                  <div className="pt-12 flex items-center gap-6">
+                    <a
+                      href="https://readyfor.jp/projects/150087/announcements/354896"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 text-white bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-full transition-all group"
+                    >
+                      <span className="text-sm font-mono tracking-wider uppercase">{t.fundPage.banner.archiveLink}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <Header />
-            <main className="pt-32 flex flex-col items-center justify-center py-8 relative z-10" style={{ background: 'transparent' }}>
-  <div className="w-full flex justify-center items-center px-4 sm:px-6 lg:px-8 mx-auto">
-    <div className="w-full max-w-2xl md:max-w-none md:w-[900px] lg:w-[1100px] xl:w-[1200px] rounded-2xl shadow-lg p-8 md:p-12 bg-black/80">
-      {/* クラウドファンディング達成メッセージ */}
-      <section className="mb-10">
-        <h2 className="text-4xl font-bold text-center text-yellow-400 mb-4">クラウドファンディング目標達成！</h2>
-        <p className="text-center text-lg text-white font-semibold mb-2">ご支援ありがとうございました！！</p>
-        <p className="text-center text-base mb-4 text-white/70">
-          11/2より開始したクラウドファンディングですが、12月15日23:00を持ちまして終了いたしました！！
-        </p>
-        <div className="bg-gray-900/80 rounded-lg p-4 mb-4">
-          <p className="font-bold mb-2 text-blue-300">ご支援者様（50音順）</p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 text-sm text-white/90">
-            <li>A. Shimizu 様</li>
-            <li>兒玉学 様</li>
-            <li>ダイキン工業株式会社 様</li>
-            <li>滝 久雄 様</li>
-            <li>中村翔太 様</li>
-            <li>Pablo 様</li>
-            <li>みらい創造インベストメンツ 金子 様</li>
-            <li>宮本 恒弘 様</li>
-            <li>ryo 様</li>
-            <li>わだたけし 様</li>
-          </ul>
-          <p className="mt-4 text-center text-base font-bold text-green-300">
-            ...をはじめとする合計で117人もの方から<br />
-            <span className="text-2xl text-yellow-300">3,660,000円</span>ものご支援を頂戴いたしました！！
-          </p>
+          </div>
         </div>
-        <p className="text-white  text-lg text-center mb-2">
-          ご支援ご協力いただいた多くの皆様に心より感謝申し上げます！！
-        </p>
-        <p className="text-center text-lg text-white mb-2">
-          皆様のご支援を受け、C-83Lが離陸するその日まで、我々CREATEはさらなる努力を続けます！
-        </p>
-        <p className="text-center text-lg text-white mb-2">
-          ここまで、CREATEを支援していただいた皆様、ありがとうございました！
-        </p>
-        <p className="text-center text-lg text-white mb-4">
-          そして、どうかこれからも応援のほど、よろしくお願いいたします！
-        </p>
-        <div className="text-center mb-6">
-          <a
-            href="https://readyfor.jp/projects/150087/announcements/354896" // 支援サイトURLを適宜変更してください
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-2 bg-blue-600 text-white rounded-full font-bold shadow hover:bg-blue-700 transition"
-          >
-            支援サイトはこちらから！
-          </a>
+
+        {/* Main Content Components */}
+        <div className="w-full max-w-7xl mx-auto px-4">
+          <Sponsors />
+          <div className="my-12 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+          <FundSupport />
         </div>
-      </section>
-      {/* プロジェクト概要 */}
-      {/* <section className="mb-10">
-        <h3 className="text-xl font-bold text-blue-300 mb-2">現在、CREATEでは新機体「C-83L」を開発中です。</h3>
-        <p className="mb-2">
-          その開発資金につきまして、より広い方々から援助をいただくべく、この度クラウドファンディングを開始いたしました。
-        </p>
-        <div className="bg-gray-800/80 rounded-lg p-4 mb-4">
-          <h4 className="font-bold text-lg text-white mb-2">プロジェクトの概要</h4>
-          <ul className="list-disc list-inside text-white/90 mb-2">
-            <li>縦型開放機構+リーフィング機構<br /><span className="text-xs text-gray-300">培ってきた技術の融合！</span></li>
-            <li>バルブシステム<br /><span className="text-xs text-gray-300">長年受け継がれてきた技術！</span></li>
-            <li>新型自作エンジン「L-5i」<br /><span className="text-xs text-gray-300">サークル史上最大！</span></li>
-          </ul>
-          <p className="text-sm text-white/80">
-            従来のものを組み合わせたり、発展させたりした技術を使用します。このロケットには、先輩方から受け継がれた技術はもちろん、情熱と努力が詰まっています。
-          </p>
-        </div>
-        <h4 className="font-bold text-lg text-white mb-2">私たちの目標</h4>
-        <p className="mb-2 text-white/80">
-          このプロジェクトの成功は、単に私たちの最後の機体が打ちあがるだけでなく、後輩たちに技術をこれまでより発展した形で引き継ぐことにもつながります。
-        </p>
-        <p className="mb-2 text-white/80">
-          やがては、次世代の宇宙探査や衛星技術の発展につながる重要な一歩となるのです。
-        </p>
-      </section> */}
-      {/* 既存のコンテンツ */}
-      <Sponsors />
-      <FundSupport />
+
+      </main>
+      <Footer />
     </div>
-  </div>
-</main>
-            <Footer />
-        </div>
-    )
+  )
 }
