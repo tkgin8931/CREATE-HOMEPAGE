@@ -89,7 +89,7 @@ export default function MainHeroSection() {
             </AnimatePresence>
 
             {/* Main Title */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
+            {/* <div className="absolute inset-0 flex flex-col justify-center items-center z-20 pointer-events-none">
                 <motion.h1
                     className="text-6xl md:text-9xl font-bold text-white tracking-widest mix-blend-overlay opacity-90"
                     initial={{ y: 20, opacity: 0 }}
@@ -106,7 +106,7 @@ export default function MainHeroSection() {
                 >
                     {t.topPage.hero.subtitle}
                 </motion.p>
-            </div>
+            </div> */}
 
             {/* Tech Details - Corners */}
             <div className="absolute top-24 left-8 md:left-16 z-20 hidden md:block">

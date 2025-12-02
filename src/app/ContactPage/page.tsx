@@ -2,7 +2,6 @@
 import Header from "../../components/ui/Header";
 import Footer from "../../components/ui/Footer";
 import Contact from "./components/Contact";
-import LightRays from './components/Background'
 import SougoLinks from './components/sougolinks';
 import { Terminal } from 'lucide-react';
 import { useLanguage } from "@/context/LanguageContext";
@@ -41,7 +40,7 @@ export default function ContactPage() {
                             <div className="h-px flex-1 bg-gray-800" />
                         </div>
                         <h1 className="text-6xl md:text-8xl font-bold text-white tracking-tighter mb-4">
-                            CONTACT<br />CENTER
+                            CONTACT
                         </h1>
                         <p className="text-gray-400 text-lg max-w-xl border-l border-white/20 pl-6">
                             {t.contactPage.header.description}
