@@ -112,17 +112,17 @@ export const translations = {
                     {
                         name: "C-103J MISSION",
                         time: "MAR 2026",
-                        caption: "高高度大気観測ペイロードの統合。"
+                        caption: "2025年度新入生機体。新型分離機構に挑戦。"
                     },
                     {
                         name: "C-97J MISSION",
                         time: "AUG 2026",
-                        caption: "次世代推進システムの飛行試験。"
+                        caption: "次世代バルブシステム＋自作エンジン搭載機体。"
                     },
                     {
                         name: "C-101J MISSION",
                         time: "NOV 2026",
-                        caption: "自律回収システムの検証。"
+                        caption: "新姿勢制御システム/リアルタイム映像伝送の検証。"
                     }
                 ]
             },
@@ -145,7 +145,7 @@ export const translations = {
                 specsLabel: "TECHNICAL SPECIFICATIONS",
                 modelName: "C-83LM",
                 codeName: "CODE: KEY-CHAN",
-                description: "大気観測用に設計された高性能観測ロケット。先進的な複合材料と独自のハイブリッド推進システムを特徴とする。",
+                description: "過去最大の自作エンジンLM5-i・史上初のリーフィング機構搭載機体",
                 specs: {
                     altitude: "MAX ALTITUDE",
                     length: "TOTAL LENGTH",
@@ -239,7 +239,9 @@ export const translations = {
                 subjectPlaceholder: "件名",
                 message: "MESSAGE",
                 messagePlaceholder: "お問い合わせ内容",
-                submit: "SEND MESSAGE"
+                submit: "SEND MESSAGE",
+                googleFormDescription: "お問い合わせは以下のGoogleフォームよりお願いいたします。",
+                googleFormButton: "Googleフォームへ移動"
             },
             network: {
                 title: "NETWORK",
@@ -249,6 +251,35 @@ export const translations = {
         common: {
             readMore: "詳しく見る",
             loading: "読み込み中..."
+        },
+        techPage: {
+            maintenance: {
+                title: "MAINTENANCE",
+                description: "現在、技術ブログのシステム移行作業を行っております。公開まで今しばらくお待ちください。",
+                backToTop: "トップページに戻る"
+            }
+        },
+        projectsPage: {
+            title: "PROJECT ARCHIVE",
+            scroll: "SCROLL TO EXPLORE ///",
+            archive: "CREATE ARCHIVE 2016-2025",
+            categories: {
+                all: "ALL",
+                rocket: "ROCKET",
+                engine: "ENGINE",
+                cansat: "CANSAT"
+            },
+            specs: {
+                altitude: "ALTITUDE",
+                length: "LENGTH",
+                weight: "WEIGHT",
+                thrust: "THRUST",
+                burnCount: "BURN COUNT",
+                status: "STATUS",
+                inProgress: "IN PROGRESS",
+                terminated: "TERMINATED",
+                completed: "COMPLETED"
+            }
         }
     },
     en: {
@@ -284,7 +315,9 @@ export const translations = {
                 subjectPlaceholder: "Regarding Partnership",
                 message: "MESSAGE",
                 messagePlaceholder: "Enter your message...",
-                submit: "SEND MESSAGE"
+                submit: "SEND MESSAGE",
+                googleFormDescription: "Please contact us via the Google Form below.",
+                googleFormButton: "Go to Google Form"
             },
             network: {
                 title: "NETWORK",
@@ -387,17 +420,17 @@ export const translations = {
                     {
                         name: "C-103J MISSION",
                         time: "MAR 2026",
-                        caption: "High-altitude atmospheric observation payload integration."
+                        caption: "2025 Freshman Project. Challenging a new separation mechanism."
                     },
                     {
                         name: "C-97J MISSION",
                         time: "AUG 2026",
-                        caption: "Next-gen propulsion system flight test."
+                        caption: "Equipped with next-gen valve system & custom engine."
                     },
                     {
                         name: "C-101J MISSION",
                         time: "NOV 2026",
-                        caption: "Autonomous recovery system validation."
+                        caption: "Verification of new attitude control system / real-time video transmission."
                     }
                 ]
             },
@@ -420,7 +453,7 @@ export const translations = {
                 specsLabel: "TECHNICAL SPECIFICATIONS",
                 modelName: "C-83LM",
                 codeName: "CODE: KEY-CHAN",
-                description: "A high-performance sounding rocket designed for atmospheric research. Featuring advanced composite materials and a custom hybrid propulsion system.",
+                description: "Equipped with our largest custom engine LM5-i and first-ever reefing mechanism.",
                 specs: {
                     altitude: "MAX ALTITUDE",
                     length: "TOTAL LENGTH",
@@ -501,6 +534,35 @@ export const translations = {
         common: {
             readMore: "Read More",
             loading: "Loading..."
+        },
+        techPage: {
+            maintenance: {
+                title: "MAINTENANCE",
+                description: "We are currently migrating our technical blog system. Please check back later.",
+                backToTop: "Back to Top"
+            }
+        },
+        projectsPage: {
+            title: "PROJECT ARCHIVE",
+            scroll: "SCROLL TO EXPLORE ///",
+            archive: "CREATE ARCHIVE 2016-2025",
+            categories: {
+                all: "ALL",
+                rocket: "ROCKET",
+                engine: "ENGINE",
+                cansat: "CANSAT"
+            },
+            specs: {
+                altitude: "ALTITUDE",
+                length: "LENGTH",
+                weight: "WEIGHT",
+                thrust: "THRUST",
+                burnCount: "BURN COUNT",
+                status: "STATUS",
+                inProgress: "IN PROGRESS",
+                terminated: "TERMINATED",
+                completed: "COMPLETED"
+            }
         }
     }
 };

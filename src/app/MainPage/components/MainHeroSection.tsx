@@ -16,19 +16,19 @@ export default function MainHeroSection() {
             type: "video",
             src: "/ScreenRecording_08-31-2025 21-51-40_1.mov",
             caption: "ENGINE 'J-6i'",
-            sub: "LIQUID PROPELLANT"
+            sub: "NEW ENGINE"
         },
         {
             type: "video",
             src: "/73L.mp4",
             caption: "C-73J 'DAC'",
-            sub: "AVIONICS SYSTEM"
+            sub: "HYBRID ROCKET"
         },
         {
             type: "video",
             src: "/cansat.mp4",
             caption: "CANSAT 'C-04R'",
-            sub: "AUTONOMOUS CONTROL"
+            sub: "AUTONOMOUS CONTROL RUNBACK"
         },
         {
             type: "image",
@@ -40,7 +40,7 @@ export default function MainHeroSection() {
             type: "image",
             src: "/61-fire.JPG",
             caption: "C-61J 'UNICORN'",
-            sub: "COMBUSTION TEST"
+            sub: "HYBRID ROCKET"
         },
     ]
 
