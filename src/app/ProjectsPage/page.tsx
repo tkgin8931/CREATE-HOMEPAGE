@@ -5,8 +5,8 @@ import { projectsData } from "./ProjectData"
 import Footer from "@/components/ui/Footer"
 import Header from "@/components/ui/Header"
 import Image from "next/image"
-import { ArrowUpRight, Rocket, Zap, Disc } from "lucide-react"
-import { motion } from "framer-motion"
+import { Disc } from "lucide-react"
+
 import { useLanguage } from "@/context/LanguageContext"
 
 export default function ProjectsPage() {
@@ -127,10 +127,10 @@ export default function ProjectsPage() {
                       onMouseEnter={() => setHoveredProject(project.id)}
                       onMouseLeave={() => setHoveredProject(null)}
                       className={`block text-left text-sm transition-all duration-300 w-full ${activeProject === project.id
-                          ? "text-white translate-x-2 font-bold"
-                          : hoveredProject === project.id
-                            ? "text-gray-300 translate-x-1"
-                            : "text-gray-600"
+                        ? "text-white translate-x-2 font-bold"
+                        : hoveredProject === project.id
+                          ? "text-gray-300 translate-x-1"
+                          : "text-gray-600"
                         }`}
                     >
                       {project.name}

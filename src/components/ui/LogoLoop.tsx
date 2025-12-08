@@ -2,21 +2,21 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 export type LogoItem =
   | {
-      node: React.ReactNode;
-      href?: string;
-      title?: string;
-      ariaLabel?: string;
-    }
+    node: React.ReactNode;
+    href?: string;
+    title?: string;
+    ariaLabel?: string;
+  }
   | {
-      src: string;
-      alt?: string;
-      href?: string;
-      title?: string;
-      srcSet?: string;
-      sizes?: string;
-      width?: number;
-      height?: number;
-    };
+    src: string;
+    alt?: string;
+    href?: string;
+    title?: string;
+    srcSet?: string;
+    sizes?: string;
+    width?: number;
+    height?: number;
+  };
 
 export interface LogoLoopProps {
   logos: LogoItem[];
@@ -70,6 +70,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 };
 
@@ -110,6 +111,7 @@ const useImageLoader = (
         img.removeEventListener('error', handleImageLoad);
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 };
 
@@ -273,7 +275,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               'inline-flex items-center',
               'motion-reduce:transition-none',
               scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
             )}
             aria-hidden={
               'href' in item && !!item.href && !('ariaLabel' in item && !!item.ariaLabel)
@@ -283,6 +285,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           </span>
         ) : (
           // Consider replacing <img> with <Image /> from next/image for optimization
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             className={cx(
               'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
@@ -290,7 +293,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               '[image-rendering:-webkit-optimize-contrast]',
               'motion-reduce:transition-none',
               scaleOnHover &&
-                'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+              'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
             )}
             src={item.src}
             srcSet={item.srcSet}

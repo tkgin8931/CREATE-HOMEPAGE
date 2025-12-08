@@ -1,7 +1,7 @@
 
 "use client"
 import React from 'react';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import Image from 'next/image';
 
@@ -14,7 +14,7 @@ export default function AboutUsOverview() {
       jpName: t.aboutUs.team.roles[0].jpName,
       description: t.aboutUs.team.roles[0].description,
       tasks: t.aboutUs.team.roles[0].tasks,
-      image: "/IMG_7241.jpg" // Rocket
+      image: "/79-CAD.png" // Rocket
     },
     {
       name: t.aboutUs.team.roles[1].name,
@@ -28,14 +28,14 @@ export default function AboutUsOverview() {
       jpName: t.aboutUs.team.roles[2].jpName,
       description: t.aboutUs.team.roles[2].description,
       tasks: t.aboutUs.team.roles[2].tasks,
-      image: "/gse.jpg" // System
+      image: "/ANSYS.png" // System
     },
     {
       name: t.aboutUs.team.roles[3].name,
       jpName: t.aboutUs.team.roles[3].jpName,
       description: t.aboutUs.team.roles[3].description,
       tasks: t.aboutUs.team.roles[3].tasks,
-      image: "/IMG_9049.png" // Recovery/Others
+      image: "/engine.png" // Recovery/Others
     }
   ];
 
@@ -95,7 +95,7 @@ export default function AboutUsOverview() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 h-64 md:h-80 w-full">
           <div className="relative group overflow-hidden border-r border-white/10">
-            <Image src="/c-04R.jpg" alt="Activity 1" fill className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
+            <Image src="/CREATE-visual.jpg" alt="Activity 1" fill className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
           </div>
           <div className="relative group overflow-hidden border-r border-white/10">
@@ -103,11 +103,11 @@ export default function AboutUsOverview() {
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
           </div>
           <div className="relative group overflow-hidden border-r border-white/10">
-            <Image src="/IMG_7241.jpg" alt="Activity 3" fill className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
+            <Image src="/IMG_0854.jpg" alt="Activity 3" fill className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
           </div>
           <div className="relative group overflow-hidden">
-            <Image src="/gse.jpg" alt="Activity 4" fill className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
+            <Image src="/IMG_9052.jpg" alt="Activity 4" fill className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function AboutUsOverview() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <span className="font-mono text-xs text-gray-600 tracking-widest uppercase">{t.aboutUs.external.label}</span>
 
-          <a href="#" className="group flex items-center gap-4 text-white hover:text-emerald-400 transition-colors">
+          <a href="https://drive.google.com/drive/u/0/folders/13f8nrL5ERnGxhedMvoN59CKWNdvQr3he" className="group flex items-center gap-4 text-white hover:text-emerald-400 transition-colors">
             <span className="text-lg font-light tracking-wide">{t.aboutUs.external.linkText}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
           </a>

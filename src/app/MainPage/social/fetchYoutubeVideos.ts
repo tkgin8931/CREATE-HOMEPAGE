@@ -21,12 +21,12 @@ interface YoutubeVideoItem {
 export async function fetchYoutubeVideos() {
     const apiKey = process.env.YOUTUBE_API_KEY;
     const channelId = process.env.CHANNEL_ID;
-    const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`;
-    const res = await fetch(url, { 
-       next: { revalidate: 60 * 30 }
-       
-     });
-    if(!res.ok) {
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
+    const res = await fetch(url, {
+        next: { revalidate: 60 * 30 }
+
+    });
+    if (!res.ok) {
         const errorText = await res.text();
         console.log("YOUTUBE_API_KEY:", apiKey);
         console.log("CHANNEL_ID:", channelId);

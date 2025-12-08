@@ -1,14 +1,14 @@
 "use client"
-import { ArrowUpRight, Target, Calendar, Activity } from "lucide-react";
+import { ArrowUpRight, Calendar } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 
 interface Mission {
   name: string;
-  timeOnOrbit: string;
+  // timeOnOrbit: string;
   caption: string;
   image: string;
-  specs: { label: string; value: string }[];
+  launchSchedule: string;
 }
 
 interface Statistics {
@@ -23,41 +23,29 @@ export default function OngoingMissions() {
   const missions: Mission[] = [
     {
       name: t.topPage.ongoing.missions[0].name,
-      timeOnOrbit: t.topPage.ongoing.missions[0].time,
+      // timeOnOrbit: t.topPage.ongoing.missions[0].time,
       caption: t.topPage.ongoing.missions[0].caption,
       image: "/IMG_7241.jpg", // Rocket Launch
-      specs: [
-        { label: "Altitude", value: "100km+" },
-        { label: "Payload", value: "3kg" },
-        { label: "Status", value: "Active" }
-      ]
+      launchSchedule: "2026.03"
     },
     {
       name: t.topPage.ongoing.missions[1].name,
-      timeOnOrbit: t.topPage.ongoing.missions[1].time,
+      // timeOnOrbit: t.topPage.ongoing.missions[1].time,
       caption: t.topPage.ongoing.missions[1].caption,
       image: "/IMG_0260.jpg", // Avionics
-      specs: [
-        { label: "Thrust", value: "500N" },
-        { label: "Burn Time", value: "12s" },
-        { label: "Propellant", value: "Hybrid" }
-      ]
+      launchSchedule: "2026.08"
     },
     {
       name: t.topPage.ongoing.missions[2].name,
-      timeOnOrbit: t.topPage.ongoing.missions[2].time,
+      // timeOnOrbit: t.topPage.ongoing.missions[2].time,
       caption: t.topPage.ongoing.missions[2].caption,
       image: "/gse.jpg", // GSE
-      specs: [
-        { label: "Recovery", value: "Autonomous" },
-        { label: "Range", value: "20km" },
-        { label: "Accuracy", value: "<5m" }
-      ]
+      launchSchedule: "2026.11"
     }
   ];
 
   const statistics: Statistics = {
-    ongoing: 3,
+    ongoing: 5,
     completed: 21,
     succeeded: 16
   };
@@ -120,13 +108,6 @@ export default function OngoingMissions() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-
-                  {/* Overlay Date */}
-                  <div className="absolute top-6 left-6 bg-black/80 backdrop-blur-sm px-4 py-2 border border-white/10">
-                    <span className="text-emerald-400 font-mono tracking-widest text-sm">
-                      {mission.timeOnOrbit}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Content Section */}
@@ -143,19 +124,20 @@ export default function OngoingMissions() {
                     {mission.caption}
                   </p>
 
-                  {/* Tech Specs Grid */}
-                  <div className="grid grid-cols-3 gap-4 mb-10 border-t border-white/10 pt-6">
-                    {mission.specs.map((spec, i) => (
-                      <div key={i}>
-                        <div className="text-xs text-gray-600 uppercase tracking-wider font-mono mb-1">{spec.label}</div>
-                        <div className="text-lg font-medium text-white">{spec.value}</div>
+                  {/* Launch Schedule */}
+                  <div className="mb-10 border-t border-white/10 pt-6">
+                    <div className="flex items-center gap-4">
+                      <Calendar className="w-5 h-5 text-emerald-500" />
+                      <div>
+                        <div className="text-xs text-gray-600 uppercase tracking-wider font-mono mb-1">Scheduled Launch</div>
+                        <div className="text-2xl font-bold text-white font-mono">{mission.launchSchedule}</div>
                       </div>
-                    ))}
+                    </div>
                   </div>
 
                   <div className="flex items-center gap-4 group/btn cursor-pointer">
                     <div className="h-px w-12 bg-white/30 group-hover/btn:w-24 transition-all duration-300" />
-                    <span className="text-sm font-mono tracking-widest uppercase group-hover/btn:text-emerald-400 transition-colors">View Mission</span>
+                    <a href="/ProjectsPage" className="text-sm font-mono tracking-widest uppercase group-hover/btn:text-emerald-400 transition-colors">View Mission</a>
                     <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover/btn:text-emerald-400 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all" />
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Send, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
@@ -15,7 +15,7 @@ export default function Contact() {
 
       <div className="bg-zinc-950 border border-white/10 p-8 rounded-lg">
         <div className="flex flex-col items-center justify-center space-y-8 py-12">
-          <p className="text-white text-lg text-center">
+          <p className="text-white text-md text-center">
             {t.contactPage.form.googleFormDescription}
           </p>
           <a

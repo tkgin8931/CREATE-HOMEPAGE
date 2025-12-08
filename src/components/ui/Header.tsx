@@ -48,16 +48,18 @@ export default function Header() {
                             </button>
                         </nav>
                         <div className="md:hidden flex items-center gap-4">
-                            <button
-                                onClick={toggleLanguage}
-                                className="text-white/90 hover:text-white transition-colors font-mono text-sm border border-white/30 rounded px-2 py-1"
-                            >
-                                {language === 'ja' ? 'EN' : 'JP'}
-                            </button>
                             {!isMenuOpen && (
-                                <button onClick={() => setIsMenuOpen(true)} className="text-white p-2">
-                                    <Menu size={24} />
-                                </button>
+                                <>
+                                    <button
+                                        onClick={toggleLanguage}
+                                        className="text-white/90 hover:text-white transition-colors font-mono text-sm border border-white/30 rounded px-2 py-1"
+                                    >
+                                        {language === 'ja' ? 'EN' : 'JP'}
+                                    </button>
+                                    <button onClick={() => setIsMenuOpen(true)} className="text-white p-2">
+                                        <Menu size={24} />
+                                    </button>
+                                </>
                             )}
                         </div>
                     </div>
@@ -80,7 +82,14 @@ export default function Header() {
                         exit={{ x: '100%', opacity: 0 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     >
-                        <div className="flex justify-end p-4">
+                        <div className="flex justify-between items-center p-4">
+                            <button
+                                onClick={toggleLanguage}
+                                className="flex items-center gap-1 text-white/90 hover:text-white transition-colors font-mono text-sm border border-white/30 rounded px-2 py-1"
+                            >
+                                <Globe size={14} />
+                                {language === 'ja' ? 'EN' : 'JP'}
+                            </button>
                             <button onClick={() => setIsMenuOpen(false)} className="text-white p-2">
                                 <X size={24} />
                             </button>

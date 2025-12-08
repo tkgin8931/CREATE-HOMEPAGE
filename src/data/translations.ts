@@ -145,7 +145,7 @@ export const translations = {
                 specsLabel: "TECHNICAL SPECIFICATIONS",
                 modelName: "C-83LM",
                 codeName: "CODE: KEY-CHAN",
-                description: "過去最大の自作エンジンLM5-i・史上初のリーフィング機構搭載機体",
+                description: "機体高高度化に向けて開発した機体。「バルブシステム×自作エンジンの開発」「縦型開放機構×リーフィング機構の開発」に挑戦した。飛翔中のエンジントラブルにより、推力を失い海に落下したため、フルサクセスの達成はならなかった。機構および自作エンジンの地上試験には成功した。",
                 specs: {
                     altitude: "MAX ALTITUDE",
                     length: "TOTAL LENGTH",

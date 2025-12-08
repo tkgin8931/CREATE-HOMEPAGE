@@ -167,7 +167,7 @@ export default function MainHeroSection() {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/50 flex flex-col items-center gap-2 cursor-pointer"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/50 hidden md:flex flex-col items-center gap-2 cursor-pointer"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >

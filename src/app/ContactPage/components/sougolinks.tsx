@@ -1,4 +1,4 @@
-import { Link2, Network, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from "@/context/LanguageContext";
 
 const links = [

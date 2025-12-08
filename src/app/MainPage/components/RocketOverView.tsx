@@ -14,17 +14,17 @@ export default function RocketOverview() {
   const specifications: Specification[] = [
     {
       label: t.topPage.rocket.specs.altitude,
-      value: "4,000",
-      unit: "m"
+      value: "N/A",
+      unit: ""
     },
     {
       label: t.topPage.rocket.specs.length,
-      value: "2,800",
+      value: "2,252",
       unit: "mm"
     },
     {
       label: t.topPage.rocket.specs.mass,
-      value: "18.5",
+      value: "17.105",
       unit: "kg"
     }
   ];

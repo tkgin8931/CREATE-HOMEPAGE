@@ -35,158 +35,158 @@ type ItemDef = {
 };
 
 const DEFAULT_IMAGES: ImageItem[] = [
-    {
-        src: '11.jpg',
-        alt: '11'
-    },
-    {
-        src: '29.jpg',
-        alt: '29'
-    },
-    {
-        src: '31.jpg',
-        alt: '31'
-    },    
-    {
-        src: '37.jpg',
-        alt: '37'
-    },
-    {
-        src: '43.jpg',
-        alt: '43'
-    },
-    {
-        src: '47.jpg',
-        alt: '47'
-    },
-    {
-        src: '53.jpg',
-        alt: '53'
-    },
-    {
-        src: '59.jpg',
-        alt: '59'
-    },
-    {
-        src: '61.jpg',
-        alt: '61'
-    },
-    {
-        src: '67.jpg',
-        alt: '67'
-    },
-    {
-        src: '71.jpg',
-        alt: '71'
-    },
-    {
-        src: '73.jpg',
-        alt: '73'
-    },
-    {
-        src: '79.jpg',
-        alt: '79'
-    },
-    {
-        src: '89.jpg',
-        alt: '89'
-    },
-    {
-        src: '79-CAD.png',
-        alt: '79-CAD'
-    },
-    {
-        src: 'gse.jpg',
-        alt: 'gse'
-    },
-    {
-        src: 'engine.png',
-        alt: 'engine'
-    },
-    {
-        src: '61-fire.JPG',
-        alt: '61-fire'
-    },
-    {
-        src: 'CREATE-visual.jpg',
-        alt: 'CREATE-visual'
-    },
-    {
-        src: 'IMG_0853.jpg',
-        alt: 'IMG_0853'
-    },
-    {
-        src: 'burnig.png',
-        alt: 'burnig'
-    },
-    {
-        src: 'j-2i.jpg',
-        alt: 'j-2i'
-    },
-    {
-        src: 'j-3i.jpg',
-        alt: 'j-3i'
-    },
-    {
-        src: 'j-i.jpg',
-        alt: 'j-i'
-    },
-    {
-        src: 'IMG_9048.jpg',
-        alt: 'IMG_9048'
-    },
-    {
-        src: 'IMG_9049.png',
-        alt: 'IMG_9049'
-    },
-    {
-        src: 'IMG_0223.jpg',
-        alt: 'IMG_0223'
-    },
-    {
-        src: 'IMG_0260.jpg',
-        alt: 'IMG_0260'
-    },
-    {
-        src: 'IMG_0854.jpg',
-        alt: 'IMG_0854'
-    },
-    {
-        src: 'IMG_0855.jpg',
-        alt: 'IMG_0855'
-    },
-    {
-        src: 'IMG_7699.jpg',
-        alt: 'IMG_7699'
-    },
-    {
-        src: 'IMG_9052.jpg',
-        alt: 'IMG_9052'
-    },
-    {
-        src: 'IMG_4201.jpg',
-        alt: 'IMG_4201'
-    },
-    {
-        src: 'IMG_4481.jpg',
-        alt: 'IMG_4481'
-    },
-    {
-        src: 'IMG_4983.jpg',
-        alt: 'IMG_4983'
-    },
-    {
-        src: 'IMG_5049.jpg',
-        alt: 'IMG_5049'
-    },
-    {
-        src: 'IMG_6096.png',
-        alt: 'IMG_6096'
-    },
-    {
-        src: 'IMG_7241.jpg',
-        alt: 'IMG_7241'
-    }
+  {
+    src: '11.jpg',
+    alt: '11'
+  },
+  {
+    src: '29.jpg',
+    alt: '29'
+  },
+  {
+    src: '31.jpg',
+    alt: '31'
+  },
+  {
+    src: '37.jpg',
+    alt: '37'
+  },
+  {
+    src: '43.jpg',
+    alt: '43'
+  },
+  {
+    src: '47.jpg',
+    alt: '47'
+  },
+  {
+    src: '53.jpg',
+    alt: '53'
+  },
+  {
+    src: '59.jpg',
+    alt: '59'
+  },
+  {
+    src: '61.jpg',
+    alt: '61'
+  },
+  {
+    src: '67.jpg',
+    alt: '67'
+  },
+  {
+    src: '71.jpg',
+    alt: '71'
+  },
+  {
+    src: '73.jpg',
+    alt: '73'
+  },
+  {
+    src: '79.jpg',
+    alt: '79'
+  },
+  {
+    src: '89.jpg',
+    alt: '89'
+  },
+  {
+    src: '79-CAD.png',
+    alt: '79-CAD'
+  },
+  {
+    src: 'gse.jpg',
+    alt: 'gse'
+  },
+  {
+    src: 'engine.png',
+    alt: 'engine'
+  },
+  {
+    src: '61-fire.JPG',
+    alt: '61-fire'
+  },
+  {
+    src: 'CREATE-visual.jpg',
+    alt: 'CREATE-visual'
+  },
+  {
+    src: 'IMG_0853.jpg',
+    alt: 'IMG_0853'
+  },
+  {
+    src: 'burnig.png',
+    alt: 'burnig'
+  },
+  {
+    src: 'j-2i.jpg',
+    alt: 'j-2i'
+  },
+  {
+    src: 'j-3i.jpg',
+    alt: 'j-3i'
+  },
+  {
+    src: 'j-i.jpg',
+    alt: 'j-i'
+  },
+  {
+    src: 'IMG_9048.jpg',
+    alt: 'IMG_9048'
+  },
+  {
+    src: 'IMG_9049.png',
+    alt: 'IMG_9049'
+  },
+  {
+    src: 'IMG_0223.jpg',
+    alt: 'IMG_0223'
+  },
+  {
+    src: 'IMG_0260.jpg',
+    alt: 'IMG_0260'
+  },
+  {
+    src: 'IMG_0854.jpg',
+    alt: 'IMG_0854'
+  },
+  {
+    src: 'IMG_0855.jpg',
+    alt: 'IMG_0855'
+  },
+  {
+    src: 'IMG_7699.jpg',
+    alt: 'IMG_7699'
+  },
+  {
+    src: 'IMG_9052.jpg',
+    alt: 'IMG_9052'
+  },
+  {
+    src: 'IMG_4201.jpg',
+    alt: 'IMG_4201'
+  },
+  {
+    src: 'IMG_4481.jpg',
+    alt: 'IMG_4481'
+  },
+  {
+    src: 'IMG_4983.jpg',
+    alt: 'IMG_4983'
+  },
+  {
+    src: 'IMG_5049.jpg',
+    alt: 'IMG_5049'
+  },
+  {
+    src: 'IMG_6096.png',
+    alt: 'IMG_6096'
+  },
+  {
+    src: 'IMG_7241.jpg',
+    alt: 'IMG_7241'
+  }
 
 ];
 
@@ -469,8 +469,8 @@ export default function DomeGallery({
         if (focusedElRef.current) return;
         stopInertia();
 
-  const evt = event as PointerEvent;
-  pointerTypeRef.current = (evt.pointerType as 'mouse' | 'pen' | 'touch') ?? 'mouse';
+        const evt = event as PointerEvent;
+        pointerTypeRef.current = (evt.pointerType as 'mouse' | 'pen' | 'touch') ?? 'mouse';
         if (pointerTypeRef.current === 'touch') evt.preventDefault();
         if (pointerTypeRef.current === 'touch') lockScroll();
         draggingRef.current = true;
@@ -574,8 +574,8 @@ export default function DomeGallery({
         if (refDiv) refDiv.remove();
         parent.style.setProperty('--rot-y-delta', `0deg`);
         parent.style.setProperty('--rot-x-delta', `0deg`);
-  el.style.visibility = '';
-  (el.style as CSSStyleDeclaration).zIndex = '0';
+        el.style.visibility = '';
+        (el.style as CSSStyleDeclaration).zIndex = '0';
         focusedElRef.current = null;
         rootRef.current?.removeAttribute('data-enlarging');
         openingRef.current = false;
@@ -727,7 +727,7 @@ export default function DomeGallery({
       height: tileR.height
     };
     el.style.visibility = 'hidden';
-  (el.style as CSSStyleDeclaration).zIndex = '0';
+    (el.style as CSSStyleDeclaration).zIndex = '0';
     const overlay = document.createElement('div');
     overlay.className = 'enlarge';
     overlay.style.cssText = `position:absolute; left:${frameR.left - mainR.left}px; top:${frameR.top - mainR.top}px; width:${frameR.width}px; height:${frameR.height}px; opacity:0; z-index:30; will-change:transform,opacity; transform-origin:top left; transition:transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease; border-radius:${openedImageBorderRadius}; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.35);`;
@@ -951,6 +951,7 @@ export default function DomeGallery({
                       backfaceVisibility: 'hidden'
                     }}
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={it.src}
                       draggable={false}

@@ -5,7 +5,7 @@ import Footer from "@/components/ui/Footer";
 import Sponsors from "./components/SponsorsList";
 import FundSupport from "./components/Fund-Support";
 import Particles from "./components/background";
-import { Award, CheckCircle, Users, ArrowRight } from "lucide-react";
+import { Award, Users, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Search, ArrowUpDown, Database } from 'lucide-react';
+import { ArrowUpDown } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface CompletedMission {
@@ -13,42 +13,42 @@ interface CompletedMission {
 
 const completedMissions: CompletedMission[] = [
   {
-    mission: "C-83LM MISSION",
+    mission: "C-83LM",
     launchSite: "NOSIRO,AKITA",
     launchDate: "AUG 22, 2025",
     payload: "Atmospheric Probe",
     status: "failure"
   },
   {
-    mission: "C-73J MISSION",
+    mission: "C-73J",
     launchSite: "O-SIMA,TOKYO",
     launchDate: "MAR 30, 2025",
     payload: "CubeSat Prototype",
     status: "success"
   },
   {
-    mission: "C-89J MISSION",
+    mission: "C-89J",
     launchSite: "O-SIMA,TOKYO",
     launchDate: "MAR 29, 2025",
     payload: "Telemetry Unit",
     status: "failure"
   },
   {
-    mission: "C-73J MISSION",
+    mission: "C-73J",
     launchSite: "KADA,WAKAYAMA",
     launchDate: "SEP 28, 2024",
     payload: "Micro-Gravity Lab",
     status: "failure"
   },
   {
-    mission: "C-79J MISSION",
+    mission: "C-79J",
     launchSite: "KADA,WAKAYAMA",
     launchDate: "MAR 25, 2024",
     payload: "Student Payload",
     status: "success"
   },
   {
-    mission: "C-71J MISSION",
+    mission: "C-71J",
     launchSite: "O-SIMA,TOKYO",
     launchDate: "OCT 20, 2023",
     payload: "Test Mass Simulator",
@@ -118,7 +118,7 @@ export default function CompletedMissions() {
             </h2>
           </div>
 
-          <div className="w-full lg:w-auto">
+          {/* <div className="w-full lg:w-auto">
             <div className="relative group">
               <input
                 type="text"
@@ -129,7 +129,7 @@ export default function CompletedMissions() {
               />
               <Search className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-600 group-focus-within:text-white transition-colors" size={20} />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Table Header */}
@@ -140,9 +140,9 @@ export default function CompletedMissions() {
           <div className="col-span-3 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('launchSite')}>
             {t.topPage.completed.tableHeaders.site} <ArrowUpDown size={10} className="inline ml-1" />
           </div>
-          <div className="col-span-3 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('payload')}>
+          {/* <div className="col-span-3 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('payload')}>
             PAYLOAD <ArrowUpDown size={10} className="inline ml-1" />
-          </div>
+          </div> */}
           <div className="col-span-2 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('launchDate')}>
             {t.topPage.completed.tableHeaders.date} <ArrowUpDown size={10} className="inline ml-1" />
           </div>
@@ -173,11 +173,11 @@ export default function CompletedMissions() {
               </div>
 
               {/* Payload (New Column) */}
-              <div className="col-span-12 lg:col-span-3">
+              {/* <div className="col-span-12 lg:col-span-3">
                 <span className="text-xs lg:text-sm font-mono text-gray-500 tracking-wider">
                   {mission.payload}
                 </span>
-              </div>
+              </div> */}
 
               {/* Date */}
               <div className="col-span-6 lg:col-span-2">
