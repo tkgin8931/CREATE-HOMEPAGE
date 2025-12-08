@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { ArrowUpDown } from 'lucide-react';
+import { ArrowUpDown, Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface CompletedMission {
@@ -118,7 +118,7 @@ export default function CompletedMissions() {
             </h2>
           </div>
 
-          {/* <div className="w-full lg:w-auto">
+          <div className="w-full lg:w-auto">
             <div className="relative group">
               <input
                 type="text"
@@ -129,7 +129,7 @@ export default function CompletedMissions() {
               />
               <Search className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-600 group-focus-within:text-white transition-colors" size={20} />
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Table Header */}
