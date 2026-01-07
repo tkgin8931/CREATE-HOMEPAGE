@@ -1,10 +1,7 @@
-https://www.notion.so/CREATE-HP-1952e90d696580ba8d62d04ddb6c6570?pvs=12
-↑TGのノーションです
-
 ## スタック
 - Next.js 15 (App Router) / React 19 / TypeScript / SWR
 - Tailwind CSS + shadcn/ui + Radix UI
-- Framer Motion, Motion, GSAP
+- Framer Motion, GSAP
 - Three.js, @react-three/fiber, postprocessing, ogl
 
 ## セットアップ
@@ -199,5 +196,6 @@ YOUTUBE_API_KEY=your_youtube_api_key
 **注意：** `.env.local` は Git 管理から除外（`.gitignore` 参照）
 
 ---
+
 
 
