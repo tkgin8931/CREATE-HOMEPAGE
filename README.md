@@ -3,6 +3,7 @@
 - Tailwind CSS + shadcn/ui + Radix UI
 - Framer Motion, GSAP
 - Three.js, @react-three/fiber, postprocessing, ogl
+- Vercel
 
 ## セットアップ
 1. Node.js 20系以上を推奨
@@ -196,6 +197,7 @@ YOUTUBE_API_KEY=your_youtube_api_key
 **注意：** `.env.local` は Git 管理から除外（`.gitignore` 参照）
 
 ---
+
 
 
 
